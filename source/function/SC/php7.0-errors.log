@@ -1,0 +1,9 @@
+[23-Dec-2019 13:49:56 Asia/Taipei] PHP Notice:  Undefined index: ac in E:\Desktop\FCU\second year\software\BaseProject\src\htdocs\function\SC\StockCode.php on line 2
+[23-Dec-2019 13:49:56 Asia/Taipei] PHP Notice:  Undefined index: pw in E:\Desktop\FCU\second year\software\BaseProject\src\htdocs\function\SC\StockCode.php on line 3
+[23-Dec-2019 13:49:56 Asia/Taipei] PHP Warning:  mysql_connect(): Access denied for user ''@'localhost' (using password: NO) in E:\Desktop\FCU\second year\software\BaseProject\src\htdocs\function\SC\StockCode.php on line 5
+[23-Dec-2019 13:52:46 Asia/Taipei] PHP Notice:  Undefined index: ac in E:\Desktop\FCU\second year\software\BaseProject\src\htdocs\function\SC\StockCode.php on line 2
+[23-Dec-2019 13:52:46 Asia/Taipei] PHP Notice:  Undefined index: pw in E:\Desktop\FCU\second year\software\BaseProject\src\htdocs\function\SC\StockCode.php on line 3
+[23-Dec-2019 13:52:46 Asia/Taipei] PHP Warning:  mysql_connect(): Access denied for user ''@'localhost' (using password: NO) in E:\Desktop\FCU\second year\software\BaseProject\src\htdocs\function\SC\StockCode.php on line 5
+[23-Dec-2019 13:54:39 Asia/Taipei] PHP Notice:  Undefined index: ac in E:\Desktop\FCU\second year\software\BaseProject\src\htdocs\function\SC\StockCode.php on line 2
+[23-Dec-2019 13:54:39 Asia/Taipei] PHP Notice:  Undefined index: pw in E:\Desktop\FCU\second year\software\BaseProject\src\htdocs\function\SC\StockCode.php on line 3
+[23-Dec-2019 13:54:39 Asia/Taipei] PHP Warning:  mysql_connect(): Access denied for user ''@'localhost' (using password: NO) in E:\Desktop\FCU\second year\software\BaseProject\src\htdocs\function\SC\StockCode.php on line 5
