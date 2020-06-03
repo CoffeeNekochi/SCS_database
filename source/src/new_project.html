@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>新建專案 | 員工派遣系統</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css\w3school.css">
+        <link rel="stylesheet" href="css\home.css">
+        <link rel="stylesheet" href="css\form.css">
+    </head>
+    <body>
+        <!--Sidebar-->
+        <div class="w3-sidebar w3-bar-block w3-collapse w3-card" style="width:200px;" id="mySidebar">
+            <button class="w3-bar-item w3-button w3-large w3-hide-large" onclick="w3_close()">Close &times;</button>
+            <a href="mgr_home.html" class="w3-bar-item w3-button">首頁</a>
+            <div class="w3-dropdown-hover">
+                <button class="w3-button">專案 <i class="fa fa-caret-down"></i></button>
+                <div class="w3-dropdown-content w3-bar-block">
+                    <a href="#" class="w3-bar-item w3-button">專案列表</a>
+                    <a href="new_project.html" class="w3-bar-item w3-button">新建專案</a>
+                    <a href="#" class="w3-bar-item w3-button">工作委派</a>
+                </div>
+              </div>
+            <a href="#" class="w3-bar-item w3-button">Link 2</a>
+            <a href="#" class="w3-bar-item w3-button">Link 3</a>
+        </div>
+
+        <!-- Head -->
+        <div class="w3-main" style="margin-left:200px">
+            <div class="w3-teal">
+                <!--nav-menu-button-->
+                <button class="w3-button w3-teal w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</button>
+                <!--Content-title-->
+                <div class="w3-container">
+                    <h1>新建專案</h1> <!--GET-USER-ID-->
+                </div>
+            </div>
+            <!--Form-->
+            <form class="w3-modal-content w3-animate-zoom" action="/action_page.php" method="post" onsubmit="submit_next()">
+                <div class="w3-container">
+                    <table class="project-head">
+                        <tr>
+                            <th>專案編號</th>
+                            <th id="pid">[Pid]</th>         <!--pid-->
+                        </tr>
+                    </table>
+                    <div class="form-style-1">
+                        <label for="p_name">                <!--pname-->
+                            <span>專案名稱 <span class="required">*</span></span>
+                            <input type="text" class="input-field" placeholder="輸入專案名稱" name="p_name" required/>
+                        </label>
+                        <label for="s_time">                <!--s_time-->
+                            <span>開始時間 <span class="required">*</span></span>
+                            <input type="datetime-local" class="datetime-field" name="s_time" required/>
+                        </label>
+                        <label for="e_time">                <!--e_time-->
+                            <span>結束時間 <span class="required">*</span></span>
+                            <input type="datetime-local" class="datetime-field" name="e_time" required/>
+                        </label>
+                        <label for="location">              <!--location-->
+                            <span>地點 <span class="required">*</span></span>
+                            <textarea class="textarea-field" placeholder="輸入地點（市-區-路-號）" name="location" required></textarea>
+                        </label>
+                        <label for="detail">                <!--detail-->
+                            <span>工作詳情</span>
+                            <textarea class="textarea-field" name="detail"></textarea>
+                        </label>
+                        <label for="num_req">               <!--num_req-->
+                            <span>人數需求 <span class="required">*</span></span>
+                            <input type="number" class="number-field" name="num_req" min="0" />
+                        </label>
+                        <label for="client">                <!--client-->
+                            <span>委託者 <span class="required">*</span></span>
+                            <input type="text" class="input-field" placeholder="輸入委託者姓名" name="client" required/>
+                        </label>
+                        <div class="submit">
+                            <label><span></span><input type="submit" value="Submit" /></label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="pop_up" title="Email Not Valid">
+            <p>Type Your Email Again</p>
+        </div>
+        <script>
+            /* confirm submit and go to project_list */
+            function submit_next(){
+                if(confirm("確認送出並回到專案管理界面嗎？")){
+                    location.href="mgr_home.html";
+                }
+                else{
+                    return false;
+                }
+            }
+        </script>
+    </body>
+</html>
