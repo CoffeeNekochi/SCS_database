@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>登錄 | 員工派遣系統</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css\w3school.css">
+        <link rel="stylesheet" href="css\login.css">
+    </head>
+    <style>
+        
+    </style>
+    <body>
+        <div class="w3-modal">
+          <!--LOGIN-FORM-->
+          <form class="w3-modal-content w3-animate-zoom" action="/action_page.php" method="post">
+            <div class="w3-container">
+              <h1 class="txt-white" style="text-align: center;"><b>員工派遣系統</b></h1>
+              
+              <label for="uname"><span class="txt-white">帳號</span></label>  <!--uname-->
+              <input type="text" placeholder="輸入帳戶ID" name="uname" required>
+          
+              <label for="psw"><span class="txt-white">密碼</span></label>    <!--psw-->
+              <input type="password" placeholder="輸入密碼" name="psw" required>
+                  
+              <button type="submit">Login</button>
+              
+              <label>                                                         <!--remember-->
+                <input type="checkbox" checked="checked" name="remember"><span class="txt-white">  記住我</span>
+              </label>
+            </div>
+          
+            <div class="container" style="background-color:#f1f1f1">
+              <span class="psw txt-white"><a href="#">忘記密碼?</a></span>    <!--forgot-->
+            </div>
+          </form>
+        </div>
+    </body>
+</html>
