@@ -2,10 +2,10 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 03, 2020 at 05:20 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.5
+-- 主機： 127.0.0.1
+-- 產生時間： 2020-06-05 16:24:30
+-- 伺服器版本： 10.4.11-MariaDB
+-- PHP 版本： 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `scs`
+-- 資料庫： `scs`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `employee`
+-- 資料表結構 `employee`
 --
 
 CREATE TABLE `employee` (
@@ -35,25 +35,25 @@ CREATE TABLE `employee` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `employee`
+-- 傾印資料表的資料 `employee`
 --
 
 INSERT INTO `employee` (`emp_id`, `emp_name`, `tel.`, `rating`) VALUES
-('E00001', 'Captain Price', '886123456789', NULL),
-('E00002', 'Simon Ghost', '866987654321', NULL),
-('E00003', 'David Maso', '866000000000', NULL),
-('E00004', 'Shu Zhi Wei', '866111111111', 'Summer Boy'),
-('E00005', 'Gordon Wee', '866696969696', 'Good IN Respond'),
-('E00006', 'Andy Vile', '886222222202', 'good'),
-('E00007', 'Brad Knight', '886111111103', NULL),
-('E00008', 'Evan Wallis', '886222222200', NULL),
-('E00009', 'Josh Zell', '886222222201', NULL),
-('E00010', 'Jared James', '886111111100', NULL);
+('E00001', '陳小春', '886934154834', NULL),
+('E00002', '魏小庭', '866926710519', NULL),
+('E00003', '曾小芳', '866925542827', NULL),
+('E00004', '蔡小明', '866963240371', '工作配合度高，同事關係佳'),
+('E00005', '吳小彥', '866982199853', NULL),
+('E00006', '林小文', '886934817643', '工作配合度差，同事關係不佳'),
+('E00007', '李小天', '886923140202', NULL),
+('E00008', '溫小德', '886914986518', NULL),
+('E00009', '廖小偉', '886920532693', NULL),
+('E00010', '葉小丁', '886982960588', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `project`
+-- 資料表結構 `project`
 --
 
 CREATE TABLE `project` (
@@ -68,7 +68,7 @@ CREATE TABLE `project` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `project`
+-- 傾印資料表的資料 `project`
 --
 
 INSERT INTO `project` (`P_id`, `P_name`, `start_date`, `end_date`, `location`, `detail`, `num_req`, `client`) VALUES
@@ -79,7 +79,7 @@ INSERT INTO `project` (`P_id`, `P_name`, `start_date`, `end_date`, `location`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `project_member`
+-- 資料表結構 `project_member`
 --
 
 CREATE TABLE `project_member` (
@@ -90,7 +90,7 @@ CREATE TABLE `project_member` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `project_member`
+-- 傾印資料表的資料 `project_member`
 --
 
 INSERT INTO `project_member` (`Pid`, `emp_id`, `lead.flag`, `detail`) VALUES
@@ -100,40 +100,40 @@ INSERT INTO `project_member` (`Pid`, `emp_id`, `lead.flag`, `detail`) VALUES
 ('P00001', 'E00004', 0, NULL),
 ('P00001', 'E00005', 0, NULL),
 ('P00002', 'E00006', 1, '負責領導，監督工作，與客戶溝通'),
-('P00001', 'E00007', 0, '目前收集有關 美式風格 諾爾繁花的設計（主要為白、金、玫瑰紅為主）'),
+('P00001', 'E00007', 0, '負責布置門口部分'),
 ('P00002', 'E00008', 0, NULL),
 ('P00003', 'E00009', 0, NULL),
 ('P00003', 'E00010', 1, '負責領導，監督工作，與客戶溝通');
 
 --
--- Indexes for dumped tables
+-- 已傾印資料表的索引
 --
 
 --
--- Indexes for table `employee`
+-- 資料表索引 `employee`
 --
 ALTER TABLE `employee`
   ADD PRIMARY KEY (`emp_id`);
 
 --
--- Indexes for table `project`
+-- 資料表索引 `project`
 --
 ALTER TABLE `project`
   ADD PRIMARY KEY (`P_id`);
 
 --
--- Indexes for table `project_member`
+-- 資料表索引 `project_member`
 --
 ALTER TABLE `project_member`
   ADD PRIMARY KEY (`emp_id`) USING BTREE,
   ADD KEY `Pid` (`Pid`);
 
 --
--- Constraints for dumped tables
+-- 已傾印資料表的限制式
 --
 
 --
--- Constraints for table `project_member`
+-- 資料表的限制式 `project_member`
 --
 ALTER TABLE `project_member`
   ADD CONSTRAINT `Prj_mem pid` FOREIGN KEY (`Pid`) REFERENCES `project` (`P_id`);
