@@ -1,3 +1,0 @@
-[24-Dec-2019 11:01:40 Asia/Taipei] PHP Notice:  Undefined index: ac in E:\Desktop\FCU\second year\software\BaseProject\src\htdocs\function\CC\Caculator.php on line 2
-[24-Dec-2019 11:01:40 Asia/Taipei] PHP Notice:  Undefined index: pw in E:\Desktop\FCU\second year\software\BaseProject\src\htdocs\function\CC\Caculator.php on line 3
-[24-Dec-2019 11:01:40 Asia/Taipei] PHP Warning:  mysql_connect(): Access denied for user ''@'localhost' (using password: NO) in E:\Desktop\FCU\second year\software\BaseProject\src\htdocs\function\CC\Caculator.php on line 5
