@@ -13,17 +13,17 @@
     <body>
         <div class="w3-modal">
           <!--LOGIN-FORM-->
-          <form class="w3-modal-content w3-animate-zoom" action="/action_page.php" method="post">
+          <form class="w3-modal-content w3-animate-zoom" action="./log.php" method="post">
             <div class="w3-container">
               <h1 class="txt-white" style="text-align: center;"><b>員工派遣系統</b></h1>
               
-              <label for="uname"><span class="txt-white">帳號</span></label>  <!--uname-->
-              <input type="text" placeholder="輸入帳戶ID" name="uname" required>
+              <label for="ac"><span class="txt-white">帳號</span></label>  <!--account-->
+              <input type="text" name="ac" required="required" placeholder="請輸入帳號">
           
-              <label for="psw"><span class="txt-white">密碼</span></label>    <!--psw-->
-              <input type="password" placeholder="輸入密碼" name="psw" required>
+              <label for="pw"><span class="txt-white">密碼</span></label>    <!--password-->
+              <input type="password" name="pw" required="required" placeholder="請輸入密碼">
                   
-              <button type="submit">Login</button>
+              <button type="submit">login</button>
               
               <label>                                                         <!--remember-->
                 <input type="checkbox" checked="checked" name="remember"><span class="txt-white">  記住我</span>
