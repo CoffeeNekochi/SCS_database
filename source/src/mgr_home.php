@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,13 +12,26 @@
     </head>
     <body>
         <!--Sidebar-->
+        <?php
+        //登入資料庫
+        $DBHOST = "localhost"; //主機位置
+        $conn = mysqli_connect( $DBHOST,$_SESSION["ac"],$_SESSION["pw"]); //連接資料庫
+        if (empty($conn)){
+            session_destroy();
+            echo "無法連結資料庫";
+            die('<br><form style="text-align: center;" 
+                  action="./index.html" method="post">
+                  <input type="submit" value="返回首頁"/></form>');
+            exit;
+        }
+        ?>
         <div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left" style="width:200px;" id="mySidebar">
             <button class="w3-bar-item w3-button w3-large w3-hide-large" onclick="w3_close()">Close &times;</button>
-            <a href="mgr_home.html" class="w3-bar-item w3-button">首頁</a>
+            <a href="mgr_home.php" class="w3-bar-item w3-button">首頁</a>
             <div class="w3-dropdown-hover">
                 <button class="w3-button">專案 <i class="fa fa-caret-down"></i></button>
                 <div class="w3-dropdown-content w3-bar-block">
-                    <a href="mgr_project.html" class="w3-bar-item w3-button">專案列表</a>
+                    <a href="mgr_project.php" class="w3-bar-item w3-button">專案列表</a>
                     <a href="new_project.html" class="w3-bar-item w3-button">新建專案</a>
                 </div>
               </div>
@@ -30,7 +46,7 @@
                 <button class="w3-button w3-teal w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</button>
                 <!--Content-title-->
                 <div class="w3-container">
-                    <h1>歡迎！主管 <span> [GET ID]</span></h1> <!--GET-USER-ID-->
+                    <h1>歡迎！主管 <span> <?php echo $_SESSION["ac"] ?></span></h1> <!--GET-USER-ID-->
                 </div>
             </div>
 
@@ -39,7 +55,7 @@
                 <hr>
                 <div class="columns">
                     <div class="block-button button-style1">
-                        <a href="mgr_project.html" class="button" id="">
+                        <a href="mgr_project.php" class="button" id="">
                           <span class="ico">
                             <img class="icoh_back" src="img\project_main_hv.png">
                             <img class="icoh_front" src="img\project_main.png" width="55px">

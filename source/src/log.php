@@ -1,6 +1,6 @@
 <?php 
 header("Content-Type:text/html; charset=utf-8");
-$url="./new_project.html";
+$url="./mgr_home.php";
 session_start();
 $_SESSION['ac']=@$_POST["ac"];
 $_SESSION['pw']=@$_POST["pw"];
@@ -28,7 +28,7 @@ url=<?php echo $url; ?>">
               <input type="submit" value="返回首頁"/></form>');
         exit;
       }else{
-        header("Location: ./new_project.html");
+        header("Location: ".$url);
       }
 ?></p>
 </body>

@@ -1,13 +1,16 @@
 <?php
-
+session_start();
 // Create connection
-$conn = mysqli_connect("localhost", "root", "", "new_scs");
+$conn = mysqli_connect("localhost", $_SESSION['ac'], $_SESSION['pw'], "new_scs");
 
 // Check connection
-if ($conn) {
-	echo "Server is connected";
-}else{
-	echo "Error";
+if (empty($conn)){
+    session_destroy();
+    echo "無法連結資料庫";
+    die('<br><form style="text-align: center;" 
+          action="./index.html" method="post">
+          <input type="submit" value="返回首頁"/></form>');
+    exit;
 }
 $query = "	SELECT S.P_id, S.P_name, S.start_date, S.end_date, S.location
 			FROM project S
@@ -38,11 +41,11 @@ if (!$result) {
         <!--Sidebar-->
         <div class="w3-sidebar w3-bar-block w3-collapse w3-card" style="width:200px;" id="mySidebar">
             <button class="w3-bar-item w3-button w3-large w3-hide-large" onclick="w3_close()">Close &times;</button>
-            <a href="mgr_home.html" class="w3-bar-item w3-button">首頁</a>
+            <a href="mgr_home.php" class="w3-bar-item w3-button">首頁</a>
             <div class="w3-dropdown-hover">
                 <button class="w3-button">專案 <i class="fa fa-caret-down"></i></button>
                 <div class="w3-dropdown-content w3-bar-block">
-                    <a href="mgr_project.html" class="w3-bar-item w3-button">專案列表</a>
+                    <a href="mgr_project.php" class="w3-bar-item w3-button">專案列表</a>
                     <a href="new_project.html" class="w3-bar-item w3-button">新建專案</a>
                 </div>
               </div>

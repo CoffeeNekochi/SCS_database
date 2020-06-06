@@ -1,4 +1,5 @@
 <?php  
+ header("Content-Type:text/html; charset=utf-8");
  $connect = mysqli_connect("localhost", "root", "", "test_local");  
  if(!empty($_POST))  
  {  
