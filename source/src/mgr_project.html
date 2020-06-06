@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<!--按鈕視窗教學:https://www.webslesson.info/2016/10/php-ajax-update-mysql-data-through-bootstrap-modal.html-->
+<html>
+    <!--
+        <?php
+
+        // Create connection
+        $conn = mysqli_connect("localhost", "root", "", "new_scs");
+
+        // Check connection
+        if ($conn) {
+            echo "Server is connected";
+        }else{
+            echo "Error";
+        }
+        $query = "	SELECT S.P_id, S.P_name, S.start_date, S.end_date, S.location
+                    FROM project S
+                    WHERE NOT EXISTS(SELECT * FROM project_member R WHERE S.P_id = R.Pid )
+                    ORDER BY S.P_id";
+        $query2 = "	SELECT S.P_id, S.P_name, S.start_date, S.end_date, S.location
+                    FROM project S
+                    WHERE EXISTS(SELECT * FROM project_member R WHERE S.P_id = R.Pid )
+                    ORDER BY S.P_id";
+
+        $result = mysqli_query($conn, $query);
+        $result2 = mysqli_query($conn, $query2);
+        if (!$result) {
+        printf("Error: %s\n", mysqli_error($conn));
+        exit();
+        }
+        ?>
+    -->
+    <head>
+        <title>專案列表 | 員工派遣系統</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css\w3school.css">
+        <link rel="stylesheet" href="css\home.css">
+        <link rel="stylesheet" href="css\form.css">
+        <link rel="stylesheet" href="css\project_list.css">
+    </head>
+    <body>
+        <!--Sidebar-->
+        <div class="w3-sidebar w3-bar-block w3-collapse w3-card" style="width:200px;" id="mySidebar">
+            <button class="w3-bar-item w3-button w3-large w3-hide-large" onclick="w3_close()">Close &times;</button>
+            <a href="mgr_home.html" class="w3-bar-item w3-button">首頁</a>
+            <div class="w3-dropdown-hover">
+                <button class="w3-button">專案 <i class="fa fa-caret-down"></i></button>
+                <div class="w3-dropdown-content w3-bar-block">
+                    <a href="mgr_project.html" class="w3-bar-item w3-button">專案列表</a>
+                    <a href="new_project.html" class="w3-bar-item w3-button">新建專案</a>
+                </div>
+              </div>
+            <a href="#" class="w3-bar-item w3-button">Link 2</a>
+            <a href="#" class="w3-bar-item w3-button">Link 3</a>
+        </div>
+
+        <!-- Head -->
+        <div class="w3-main" style="margin-left:200px">
+            <div class="w3-teal">
+                <!--nav-menu-button-->
+                <button class="w3-button w3-teal w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</button>
+                <!--Content-title-->
+                <div class="w3-container">
+                    <h1>專案列表</h1>
+                </div>
+            </div>
+            <!--Main-->
+            <div>
+                <button type="button" class="button-add button-change" onclick="window.location.href='new_project.html';">新增專案</button>
+            </div>
+            <!--table-->
+            <div class="container-table_project">
+                <div class="wrap-table_project">
+                    <table class="table_project">
+                        <thead>
+                            <tr class="table_project-head">
+                                <th class="column1">專案名稱</th>
+                                <th class="column2">專案編號</th>
+                                <th class="column3">開始時間</th>
+                                <th class="column3">結束時間</th>
+                                <th class="column5">地點</th>
+                                <th class="column6" style="text-align: center;">已委派</th>
+                                <th class="column7">動作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!--
+                                <?php  
+                                    while($row = mysqli_fetch_array($result)) {   //印出未委派資料
+							    ?>
+                                <tr>
+                                    <td class="column1 bold"><?php echo $row["P_name"]; ?></td>
+                                    <td class="column2"><?php echo $row["P_id"]; ?></td>
+                                    <td class="column3"><?php echo $row["start_date"]; ?></td>
+                                    <td class="column3"><?php echo $row["end_date"]; ?></td>
+                                    <td class="column4"><?php echo $row["location"]; ?></td>
+                                    <td class="column5 red">&#10008;</td>
+                                    <td class="column6">
+                                        <input type="button" name="view" value="查看" id="<?php echo $row["P_name"]; ?>" class="button button-change view_data" />
+                                        <input type="button" name="edit" value="修改" id="<?php echo $row["P_name"]; ?>" class="button button-view edit_data" />  
+                                    </td>
+                                </tr>
+                                <?php  
+                                    }  
+                                ?>
+                                <?php  
+                                    while($row = mysqli_fetch_array($result2)) {   //印出已委派資料
+                                ?>
+                                <tr>
+                                    <td class="column1 bold"><?php echo $row["P_name"]; ?></td>
+                                    <td class="column2"><?php echo $row["P_id"]; ?></td>
+                                    <td class="column3"><?php echo $row["start_date"]; ?></td>
+                                    <td class="column3"><?php echo $row["end_date"]; ?></td>
+                                    <td class="column4"><?php echo $row["location"]; ?></td>
+                                    <td class="column5 green">&#10004;</td>
+                                    <td class="column6">
+                                        <input type="button" name="view" value="查看" id="<?php echo $row["P_name"]; ?>" class="button button-change view_data" />
+                                        <input type="button" name="edit" value="修改" id="<?php echo $row["P_name"]; ?>" class="button button-view edit_data" /> 
+                                    </td>
+                                </tr>
+                                <?php  
+                                    }  
+                                ?>
+                            -->
+                            <!-- test example (need to delete in php)-->
+                            <tr>
+                                <td class="column1 bold">"P_name"</td>
+                                <td class="column2">'P_id'</td>
+                                <td class="column3">'start_date'</td>
+                                <td class="column3">'end_date'</td>
+                                <td class="column4">'location'</td>
+                                <td class="column5 red">&#10008;</td>
+                                <td class="column6">
+                                    <input type="button" name="edit" value="查看" id="view1" onclick="document.getElementById('dataModal').style.display='block'" class="button button-view edit_data"/>
+                                    <input type="button" name="view" value="修改" id="change2" onclick="document.getElementById('edit_data_Modal').style.display='block'" class="button button-change"/>
+                                </td>
+                            </tr>
+                            <!---->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagi">
+                    <table class="pagi_table">
+                        <tr>
+                            <td>
+                                <!--
+                                    <?php   //分頁頁碼
+                                        echo "<p>共 ".$data_nums." 筆-在 ".$page." 頁-共 ".$pages." 頁";
+                                    ?>
+                                -->
+                                <!--test-pagination (need to delete in php)-->
+                                <p>共 '$data_nums.' 筆-在 '.$page.' 頁-共 '.$pages.' 頁'</p>
+                                <!---->
+                            </td>
+                            <td>
+                                <div class="pagination">
+                                    <!--
+                                        <?php
+                                            //分頁頁碼
+                                            for( $i=1 ; $i<=$pages ; $i++ ) {
+                                                if($i == $page)
+                                                    echo "<a href=?page=".$i." class="active">".$i."</a>";
+                                                else
+                                                    echo "<a href=?page=".$i.">".$i."</a> ";
+                                            } 
+                                        ?>
+                                    -->
+                                    <!--test-pagination (need to delete in php)-->
+                                    <a href="#" class="active">1</a>
+                                    <a href="#">2</a>
+                                    <a href="#">3</a>
+                                    <a href="#">4</a>
+                                    <a href="#">5</a>
+                                    <a href="#">6</a>
+                                    <!---->
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+<!-- project data view-->
+<div id="dataModal" class="w3-modal fade">
+    <div class="w3-modal-content radius w3-animate-zoom">  
+         <div class="w3-container radius" style="background-color: white;">  
+            <span onclick="document.getElementById('dataModal').style.display='none'" class="w3-button w3-display-topright"  data-dismiss="modal">&times;</span>
+            <h3>專案詳情</h3><hr>
+            <div class="modal-body" id="project_detail">
+                <table class="w3-table">
+                    <tr>
+                        <th class="bold2">專案編號</th>
+                        <td>P_id</td>
+                    </tr>
+                    <tr>
+                        <th class="bold2">專案名稱</th>
+                        <td>P_name</td>
+                    </tr>
+                    <tr>
+                        <th class="bold2">開始時間</th>
+                        <td>s_time</td>
+                    </tr>
+                    <tr>
+                        <th class="bold2">結束時間</th>
+                        <td>e_time</td>
+                    </tr>
+                    <tr>
+                        <th class="bold2">地點</th>
+                        <td>location</td>
+                    </tr>
+                    <tr>
+                        <th class="bold2">領隊</th>
+                        <td>E_id&emsp;E_name</td>
+                    </tr>
+                </table>
+                <table class="w3-table">
+                    <tr>
+                        <th class="bold2">工作詳情</th>
+                        <td>detail</td>
+                    </tr>
+                </table>
+                <h4>工作分配</h4>
+                <table class="w3-table">
+                    <tr>
+                        <th class="bold2">員工</th>
+                        <th class="bold2" style="width: 70%;">工作規劃</th>
+                    </tr>
+                    <tr>
+                        <td class="bold2">E_id&emsp;E_name</td>
+                        <td>job_detail</td>
+                    </tr>
+                </table>
+            </div>
+            <button type="button" onclick="document.getElementById('dataModal').style.display='none'" class="button-close" data-dismiss="modal">Close</button>  
+         </div>  
+    </div>  
+</div>
+<!-- project data edit-->
+<div id="edit_data_Modal" class="w3-modal fade">
+    <div class="w3-modal-content radius w3-animate-zoom">  
+         <div class="w3-container radius" style="background-color: white;">  
+            <span onclick="document.getElementById('edit_data_Modal').style.display='none'" class="w3-button w3-display-topright"  data-dismiss="modal">&times;</span>
+            <h3>專案詳情</h3><hr>
+            <div class="modal-body">
+                <form action="/action_page.php" method="post" id="insert_form">
+                    <div class="w3-container">
+                        <table class="project-head">
+                            <tr>
+                                <th>專案編號</th>
+                                <th id="pid">[Pid]</th>         <!--pid-->
+                            </tr>
+                        </table>
+                        <div class="form-style-1">
+                            <label for="p_name">                <!--pname-->
+                                <span>專案名稱 <span class="required">*</span></span>
+                                <input type="text" class="input-field" placeholder="輸入專案名稱" name="p_name" required/>
+                            </label>
+                            <label for="s_time">                <!--s_time-->
+                                <span>開始時間 <span class="required">*</span></span>
+                                <input type="datetime-local" class="datetime-field" name="s_time" required/>
+                            </label>
+                            <label for="e_time">                <!--e_time-->
+                                <span>結束時間 <span class="required">*</span></span>
+                                <input type="datetime-local" class="datetime-field" name="e_time" required/>
+                            </label>
+                            <label for="location">              <!--location-->
+                                <span>地點 <span class="required">*</span></span>
+                                <textarea class="textarea-field" placeholder="輸入地點（市-區-路-號）" name="location" required></textarea>
+                            </label>
+                            <label for="detail">                <!--detail-->
+                                <span>工作詳情</span>
+                                <textarea class="textarea-field" name="detail"></textarea>
+                            </label>
+                            <label for="num_req">               <!--num_req-->
+                                <span>人數需求 <span class="required">*</span></span>
+                                <input type="number" class="number-field" name="num_req" min="0" />
+                            </label>
+                            <label for="client">                <!--client-->
+                                <span>委託者 <span class="required">*</span></span>
+                                <input type="text" class="input-field" placeholder="輸入委託者姓名" name="client" required/>
+                            </label>
+                            <div class="submit">
+                                <label><span></span><input type="submit" style="background-color: green;" value="Submit" /></label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <button type="button" onclick="document.getElementById('edit_data_Modal').style.display='none'" class="button-close" data-dismiss="modal">Close</button>  
+         </div>  
+    </div>  
+</div>
+<script>  
+    $(document).ready(function(){   
+         $(document).on('click', '.edit_data', function(){  
+              var project_id = $(this).attr("P_id");  
+              $.ajax({  
+                   url:"fetch.php",  
+                   method:"POST",  
+                   data:{project_id:project_id},  
+                   dataType:"json",  
+                   success:function(data){  
+                        $('#name').val(data.name);  
+                        $('#address').val(data.address);  
+                        $('#gender').val(data.gender);  
+                        $('#designation').val(data.designation);  
+                        $('#age').val(data.age);  
+                        $('#employee_id').val(data.id);  
+                        $('#insert').val("Update");  
+                        $('#edit_data_Modal').modal('show');  
+                   }  
+              });  
+         });  
+         $('#insert_form').on("submit", function(event){  
+              event.preventDefault();  
+              if($('#name').val() == "")  
+              {  
+                   alert("Name is required");  
+              }  
+              else if($('#address').val() == '')  
+              {  
+                   alert("Address is required");  
+              }  
+              else if($('#designation').val() == '')  
+              {  
+                   alert("Designation is required");  
+              }  
+              else if($('#age').val() == '')  
+              {  
+                   alert("Age is required");  
+              }  
+              else  
+              {  
+                   $.ajax({  
+                        url:"insert.php",  
+                        method:"POST",  
+                        data:$('#insert_form').serialize(),  
+                        beforeSend:function(){  
+                             $('#insert').val("Inserting");  
+                        },  
+                        success:function(data){  
+                             $('#insert_form')[0].reset();  
+                             $('#add_data_Modal').modal('hide');  
+                             $('#employee_table').html(data);  
+                        }  
+                   });  
+              }  
+         });  
+         $(document).on('click', '.view_data', function(){  
+              var employee_id = $(this).attr("id");  
+              if(employee_id != '')  
+              {  
+                   $.ajax({  
+                        url:"select.php",  
+                        method:"POST",  
+                        data:{employee_id:employee_id},  
+                        success:function(data){  
+                             $('#employee_detail').html(data);  
+                             $('#dataModal').modal('show');  
+                        }  
+                   });  
+              }            
+         });  
+    });  
+    </script>
