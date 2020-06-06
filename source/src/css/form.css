@@ -75,6 +75,10 @@ body{
 	height:100px;
 	width: 55%;
 }
+.form-style-1 .textarea-field2{
+	height:80px;
+	width: 390px;
+}
 .form-style-1 input[type=submit],
 .form-style-1 input[type=button]{
 	border: none;

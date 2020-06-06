@@ -1,6 +1,9 @@
 body{
 	background-image: url("../img/login_bg.png");
 }
+.chosen-container.chosen-container-single {
+  width: 140px !important; /* or any value that fits your needs */
+}
 /*############### tabel css ###############*/
 .container-table_project {
     width: 100%;

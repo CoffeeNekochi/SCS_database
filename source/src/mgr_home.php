@@ -9,6 +9,7 @@ session_start();
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css\w3school.css">
         <link rel="stylesheet" href="css\home.css">
+		<link rel="stylesheet" href="css\sidebar.css">
     </head>
     <body>
         <!--Sidebar-->
@@ -25,18 +26,38 @@ session_start();
             exit;
         }
         ?>
-        <div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left" style="width:200px;" id="mySidebar">
+		<div class="w3-sidebar w3-bar-block w3-collapse w3-card" style="width:200px;" id="mySidebar">
             <button class="w3-bar-item w3-button w3-large w3-hide-large" onclick="w3_close()">Close &times;</button>
-            <a href="mgr_home.php" class="w3-bar-item w3-button">首頁</a>
-            <div class="w3-dropdown-hover">
-                <button class="w3-button">專案 <i class="fa fa-caret-down"></i></button>
-                <div class="w3-dropdown-content w3-bar-block">
-                    <a href="mgr_project.php" class="w3-bar-item w3-button">專案列表</a>
-                    <a href="new_project.html" class="w3-bar-item w3-button">新建專案</a>
-                </div>
-              </div>
-            <a href="#" class="w3-bar-item w3-button">Link 2</a>
-            <a href="#" class="w3-bar-item w3-button">Link 3</a>
+            <a href="mgr_home.php" class="w3-bar-item side_header">首頁</a>
+            <nav class="sidebar-nav">
+                <ul>
+                  <li>
+                    <a><img src="img\project.png"><span>專案</span></a>
+                    <ul class="nav-flyout">
+                      <li>
+                        <a href="mgr_project.php"><img src="img\project_main.png">專案列表</a>
+                      </li>
+                      <li>
+                        <a href="new_project.html"><img src="img\new_project.png">新建專案</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a><img src="img\staff.png"><span>員工</span></a>
+                    <ul class="nav-flyout">
+                      <li>
+                        <a href="#"><img src="img\employee.png">員工列表</a>
+                      </li>
+                      <li>
+                        <a href="#"><img src="img\new_emp.png">新增員工</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#"><img src="img\calender.png"><span class="">Cocaine</span></a>
+                  </li>
+                </ul>
+              </nav>
         </div>
 
         <!-- Head -->
