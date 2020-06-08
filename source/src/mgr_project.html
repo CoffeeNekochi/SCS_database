@@ -31,7 +31,7 @@
         ?>
     -->
     <head>
-        <title>專案列表 | 員工派遣系統</title>
+        <title>專案管理 | 員工派遣系統</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css\w3school.css">
         <link rel="stylesheet" href="css\home.css">
@@ -55,7 +55,7 @@
                     <a><img src="img\project.png"><span>專案</span></a>
                     <ul class="nav-flyout">
                       <li>
-                        <a href="mgr_project.html"><img src="img\project_main.png">專案列表</a>
+                        <a href="mgr_project.html"><img src="img\project_main.png">專案管理</a>
                       </li>
                       <li>
                         <a href="new_project.html"><img src="img\new_project.png">新建專案</a>
@@ -87,7 +87,7 @@
                 <button class="w3-button w3-teal w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</button>
                 <!--Content-title-->
                 <div class="w3-container">
-                    <h1>專案列表</h1>
+                    <h1>專案管理</h1>
                 </div>
             </div>
             <!--Main-->
@@ -215,15 +215,19 @@
             <span onclick="document.getElementById('dataModal').style.display='none'" class="w3-button w3-display-topright"  data-dismiss="modal">&times;</span>
             <h3>專案詳情</h3><hr>
             <div class="modal-body" id="project_detail">
-                <table class="w3-table">
+                <table class="w3-table tab-pid">
                     <tr>
                         <th class="bold2">專案編號</th>
-                        <td>P_id</td>
+                        <td>P00000</td>
                     </tr>
+                </table>
+                <table class="w3-table tab-pname">
                     <tr>
                         <th class="bold2">專案名稱</th>
-                        <td>P_name</td>
+                        <td>P00000</td>
                     </tr>
+                </table>
+                <table class="w3-table tab-time">
                     <tr>
                         <th class="bold2">開始時間</th>
                         <td>s_time</td>
@@ -232,26 +236,38 @@
                         <th class="bold2">結束時間</th>
                         <td>e_time</td>
                     </tr>
+                </table>
+                <table class="w3-table tab-location">
                     <tr>
-                        <th class="bold2">地點</th>
+                        <th class="bold2">派遣地點</th>
                         <td>location</td>
+                    </tr>
+                </table>
+                <table class="w3-table tab-detail">
+                    <tr>
+                        <th class="bold2">工作描述</th>
+                        <td>detail</td>
+                    </tr>
+                </table>
+                <table class="w3-table tab-num">
+                    <tr>
+                        <th class="bold2">需求人數</th>
+                        <td>num</td>
+                    </tr>
+                    <tr>
+                        <th class="bold2">委託單位</th>
+                        <td>num</td>
                     </tr>
                     <tr>
                         <th class="bold2">領隊</th>
                         <td>E_id&emsp;E_name</td>
                     </tr>
                 </table>
-                <table class="w3-table">
-                    <tr>
-                        <th class="bold2">工作詳情</th>
-                        <td>detail</td>
-                    </tr>
-                </table>
-                <h4>工作分配</h4>
-                <table class="w3-table">
+                
+                <table class="w3-table tab-emp">
                     <tr>
                         <th class="bold2">員工</th>
-                        <th class="bold2" style="width: 70%;">工作規劃</th>
+                        <th class="bold2" style="width: 70%;">工作详情</th>
                     </tr>
                     <tr>
                         <td class="bold2">E_id&emsp;E_name</td>
@@ -259,7 +275,8 @@
                     </tr>
                 </table>
             </div>
-            <button type="button" onclick="document.getElementById('dataModal').style.display='none'" class="button-close" data-dismiss="modal">Close</button>  
+            
+            <button type="button" onclick="document.getElementById('dataModal').style.display='none'" class="button-close fl-lf" data-dismiss="modal">Close</button>  
          </div>  
     </div>  
 </div>
@@ -292,11 +309,11 @@
                                 <input type="datetime-local" class="datetime-field" name="e_time" required/>
                             </label>
                             <label for="location">              <!--location-->
-                                <span>地點 <span class="required">*</span></span>
+                                <span>派遣地點 <span class="required">*</span></span>
                                 <textarea class="textarea-field" placeholder="輸入地點（市-區-路-號）" name="location" required></textarea>
                             </label>
                             <label for="detail">                <!--detail-->
-                                <span>工作詳情</span>
+                                <span>工作描述</span>
                                 <textarea class="textarea-field" name="detail"></textarea>
                             </label>
                             <label for="num_req">               <!--num_req-->
@@ -304,7 +321,7 @@
                                 <input type="number" class="number-field" name="num_req" min="0" />
                             </label>
                             <label for="client">                <!--client-->
-                                <span>委託者 <span class="required">*</span></span>
+                                <span>委託單位 <span class="required">*</span></span>
                                 <input type="text" class="input-field" placeholder="輸入委託者姓名" name="client" required/>
                             </label>
                             <div class="member_job_list">
@@ -321,8 +338,8 @@
                                                 <select id="search_emp" name="search_emp">
                                                     <option value="#">-- 选择员工 --</option>
                                                     <option value="#">李焕良 E00001</option>
-                                                    <option value="#">-- 选择员工 --</option>
-                                                    <option value="#">-- 选择员工 --</option>
+                                                    <option value="#">Simon Ghost E00002</option>
+                                                    <option value="#">David Maso E00003</option>
                                                     
                                                     <!--
                                                         while($row = mysqli_fetch_array()){
@@ -340,7 +357,7 @@
                             </div>
                             
                             <div class="submit">
-                                <label><span></span><input type="submit" style="background-color: green;" value="Submit" /></label>
+                                <label><input type="submit" style="background-color: green;" value="Submit" /></label>
                             </div>
                         </div>
                     </div>

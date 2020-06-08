@@ -2,7 +2,7 @@ body{
 	background-image: url("../img/login_bg.png");
 }
 .chosen-container.chosen-container-single {
-  width: 140px !important; /* or any value that fits your needs */
+  width: 180px !important; /* or any value that fits your needs */
 }
 /*############### tabel css ###############*/
 .container-table_project {
@@ -191,7 +191,7 @@ tbody tr:hover {
 .w3-modal{
   z-index:3;
   display:none;
-  padding-top:100px;
+  padding-top:70px;
   position:fixed;
   left:0;
   top:0;
@@ -207,7 +207,7 @@ tbody tr:hover {
   position:relative;
   padding:0;
   outline:0;
-  width:600px
+  width:1000px
 }
 .radius {
   border-radius: 12px;
@@ -219,6 +219,64 @@ tbody tr:hover {
 .w3-table tr th{
   width: 30%;
 }
+/*############### view css ###############*/
+.tab-pid{
+  float: left;
+  width: 180px;
+}
+.tab-pid tr th{
+  width: 100px;
+}
+.tab-pname{
+  float: right;
+  width: 60%;
+}
+.tab-pname tr th{
+  width: 100px;
+}
+.tab-time{
+  float: left;
+  width: 300px;
+}
+.tab-time tr th{
+  width: 100px;
+}
+.tab-location{
+  float: right;
+  height: 80px;
+  width: 60%;
+}
+.tab-location tr th{
+  width: 100px;
+}
+.tab-detail{
+  height: 150px;
+}
+.tab-detail tr th{
+  width: 100px;
+}
+.tab-num{
+  float: left;
+  width: 35%;
+}
+.tab-num tr th{
+  width: 30%;
+}
+.tab-num tr td{
+  width: 70px;
+}
+.tab-emp{
+  float: right;
+  width: 60%;
+  margin-bottom: 80px;
+}
+.tab-location tr th{
+  width: 100px;
+}
+.fl-lf{
+  float: left;
+}
+
 /*############### media desplay css ###############*/
 @media screen and (max-width: 992px) {
   .table_project {
