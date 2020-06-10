@@ -2,10 +2,10 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 10, 2020 at 11:08 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.5
+-- 主機： 127.0.0.1
+-- 產生時間： 2020-06-10 17:54:41
+-- 伺服器版本： 10.4.11-MariaDB
+-- PHP 版本： 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,27 +18,27 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `new_scs`
+-- 資料庫： `new_scs`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `employee`
+-- 資料表結構 `employee`
 --
 
 CREATE TABLE `employee` (
   `emp_id` char(10) NOT NULL,
   `emp_name` varchar(30) NOT NULL,
-  `tel.` char(16) NOT NULL,
+  `tel` char(16) NOT NULL,
   `rating` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `employee`
+-- 傾印資料表的資料 `employee`
 --
 
-INSERT INTO `employee` (`emp_id`, `emp_name`, `tel.`, `rating`) VALUES
+INSERT INTO `employee` (`emp_id`, `emp_name`, `tel`, `rating`) VALUES
 ('E00001', '陳小春', '886934154834', NULL),
 ('E00002', '魏小庭', '866926710519', NULL),
 ('E00003', '曾小芳', '866925542827', NULL),
@@ -53,7 +53,55 @@ INSERT INTO `employee` (`emp_id`, `emp_name`, `tel.`, `rating`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `location`
+-- 替換檢視表以便查看 `emp_info`
+-- (請參考以下實際畫面)
+--
+CREATE TABLE `emp_info` (
+`emp_id` char(10)
+,`emp_name` varchar(30)
+,`tel` char(16)
+,`rating` text
+);
+
+-- --------------------------------------------------------
+
+--
+-- 替換檢視表以便查看 `emp_proj`
+-- (請參考以下實際畫面)
+--
+CREATE TABLE `emp_proj` (
+`P_name` varchar(30)
+,`P_id` char(10)
+,`start_date` datetime(6)
+,`end_date` datetime(6)
+,`loc_addr` varchar(30)
+,`emp_id` char(10)
+);
+
+-- --------------------------------------------------------
+
+--
+-- 替換檢視表以便查看 `emp_proj_info`
+-- (請參考以下實際畫面)
+--
+CREATE TABLE `emp_proj_info` (
+`P_id` char(10)
+,`P_name` varchar(30)
+,`start_date` datetime(6)
+,`end_date` datetime(6)
+,`loc_addr` varchar(30)
+,`lead_id` char(10)
+,`lead_name` varchar(30)
+,`p_detail` text
+,`emp_id` char(10)
+,`emp_name` varchar(30)
+,`e_detail` text
+);
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `location`
 --
 
 CREATE TABLE `location` (
@@ -64,7 +112,7 @@ CREATE TABLE `location` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `location`
+-- 傾印資料表的資料 `location`
 --
 
 INSERT INTO `location` (`loc_pid`, `loc_addr`, `lat`, `lng`) VALUES
@@ -75,7 +123,96 @@ INSERT INTO `location` (`loc_pid`, `loc_addr`, `lat`, `lng`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `project`
+-- 替換檢視表以便查看 `mgr_cal`
+-- (請參考以下實際畫面)
+--
+CREATE TABLE `mgr_cal` (
+`P_id` char(10)
+,`P_name` varchar(30)
+,`client` varchar(30)
+,`loc_addr` varchar(30)
+,`start_date` datetime(6)
+,`end_date` datetime(6)
+);
+
+-- --------------------------------------------------------
+
+--
+-- 替換檢視表以便查看 `mgr_emp`
+-- (請參考以下實際畫面)
+--
+CREATE TABLE `mgr_emp` (
+`emp_name` varchar(30)
+,`emp_id` char(10)
+,`rating` text
+);
+
+-- --------------------------------------------------------
+
+--
+-- 替換檢視表以便查看 `mgr_emp_info`
+-- (請參考以下實際畫面)
+--
+CREATE TABLE `mgr_emp_info` (
+`emp_id` char(10)
+,`emp_name` varchar(30)
+,`tel` char(16)
+,`P_id` char(10)
+,`P_name` varchar(30)
+,`lead.flag` tinyint(1)
+,`detail` text
+);
+
+-- --------------------------------------------------------
+
+--
+-- 替換檢視表以便查看 `mgr_proj`
+-- (請參考以下實際畫面)
+--
+CREATE TABLE `mgr_proj` (
+`P_name` varchar(30)
+,`P_id` char(10)
+,`start_date` datetime(6)
+,`end_date` datetime(6)
+,`loc_addr` varchar(30)
+);
+
+-- --------------------------------------------------------
+
+--
+-- 替換檢視表以便查看 `mgr_proj_info`
+-- (請參考以下實際畫面)
+--
+CREATE TABLE `mgr_proj_info` (
+`P_id` char(10)
+,`P_name` varchar(30)
+,`start_date` datetime(6)
+,`end_date` datetime(6)
+,`loc_addr` varchar(30)
+,`p_detail` text
+,`num_req` int(4)
+,`client` varchar(30)
+,`lead_id` char(10)
+,`lead_name` varchar(30)
+);
+
+-- --------------------------------------------------------
+
+--
+-- 替換檢視表以便查看 `mgr_proj_info_emp`
+-- (請參考以下實際畫面)
+--
+CREATE TABLE `mgr_proj_info_emp` (
+`Pid` char(10)
+,`emp_id` char(10)
+,`emp_name` varchar(30)
+,`emp_detail` text
+);
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `project`
 --
 
 CREATE TABLE `project` (
@@ -89,7 +226,7 @@ CREATE TABLE `project` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `project`
+-- 傾印資料表的資料 `project`
 --
 
 INSERT INTO `project` (`P_id`, `P_name`, `start_date`, `end_date`, `detail`, `num_req`, `client`) VALUES
@@ -100,7 +237,7 @@ INSERT INTO `project` (`P_id`, `P_name`, `start_date`, `end_date`, `detail`, `nu
 -- --------------------------------------------------------
 
 --
--- Table structure for table `project_member`
+-- 資料表結構 `project_member`
 --
 
 CREATE TABLE `project_member` (
@@ -111,7 +248,7 @@ CREATE TABLE `project_member` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `project_member`
+-- 傾印資料表的資料 `project_member`
 --
 
 INSERT INTO `project_member` (`Pid`, `emp_id`, `lead.flag`, `detail`) VALUES
@@ -126,47 +263,128 @@ INSERT INTO `project_member` (`Pid`, `emp_id`, `lead.flag`, `detail`) VALUES
 ('P00003', 'E00009', 0, NULL),
 ('P00003', 'E00010', 1, '負責領導，監督工作，與客戶溝通');
 
+-- --------------------------------------------------------
+
 --
--- Indexes for dumped tables
+-- 檢視表結構 `emp_info`
+--
+DROP TABLE IF EXISTS `emp_info`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `emp_info`  AS  select `employee`.`emp_id` AS `emp_id`,`employee`.`emp_name` AS `emp_name`,`employee`.`tel` AS `tel`,`employee`.`rating` AS `rating` from `employee` ;
+
+-- --------------------------------------------------------
+
+--
+-- 檢視表結構 `emp_proj`
+--
+DROP TABLE IF EXISTS `emp_proj`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `emp_proj`  AS  select `project`.`P_name` AS `P_name`,`project`.`P_id` AS `P_id`,`project`.`start_date` AS `start_date`,`project`.`end_date` AS `end_date`,`location`.`loc_addr` AS `loc_addr`,`project_member`.`emp_id` AS `emp_id` from ((`project` join `location`) join `project_member`) where `project`.`P_id` = `location`.`loc_pid` and `project`.`P_id` = `project_member`.`Pid` ;
+
+-- --------------------------------------------------------
+
+--
+-- 檢視表結構 `emp_proj_info`
+--
+DROP TABLE IF EXISTS `emp_proj_info`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `emp_proj_info`  AS  select `mgr_proj_info`.`P_id` AS `P_id`,`mgr_proj_info`.`P_name` AS `P_name`,`mgr_proj_info`.`start_date` AS `start_date`,`mgr_proj_info`.`end_date` AS `end_date`,`mgr_proj_info`.`loc_addr` AS `loc_addr`,`mgr_proj_info`.`lead_id` AS `lead_id`,`mgr_proj_info`.`lead_name` AS `lead_name`,`mgr_proj_info`.`p_detail` AS `p_detail`,`employee`.`emp_id` AS `emp_id`,`employee`.`emp_name` AS `emp_name`,`project_member`.`detail` AS `e_detail` from ((`mgr_proj_info` join `project_member`) join `employee`) where `mgr_proj_info`.`P_id` = `project_member`.`Pid` and `project_member`.`emp_id` = `employee`.`emp_id` ;
+
+-- --------------------------------------------------------
+
+--
+-- 檢視表結構 `mgr_cal`
+--
+DROP TABLE IF EXISTS `mgr_cal`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `mgr_cal`  AS  select `project`.`P_id` AS `P_id`,`project`.`P_name` AS `P_name`,`project`.`client` AS `client`,`location`.`loc_addr` AS `loc_addr`,`project`.`start_date` AS `start_date`,`project`.`end_date` AS `end_date` from (`project` join `location`) where `project`.`P_id` = `location`.`loc_pid` ;
+
+-- --------------------------------------------------------
+
+--
+-- 檢視表結構 `mgr_emp`
+--
+DROP TABLE IF EXISTS `mgr_emp`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `mgr_emp`  AS  select `employee`.`emp_name` AS `emp_name`,`employee`.`emp_id` AS `emp_id`,`employee`.`rating` AS `rating` from `employee` ;
+
+-- --------------------------------------------------------
+
+--
+-- 檢視表結構 `mgr_emp_info`
+--
+DROP TABLE IF EXISTS `mgr_emp_info`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `mgr_emp_info`  AS  select `e`.`emp_id` AS `emp_id`,`e`.`emp_name` AS `emp_name`,`e`.`tel` AS `tel`,`p`.`P_id` AS `P_id`,`p`.`P_name` AS `P_name`,`pm`.`lead.flag` AS `lead.flag`,`pm`.`detail` AS `detail` from ((`employee` `e` join `project_member` `pm`) join `project` `p`) where `e`.`emp_id` = `pm`.`emp_id` and `pm`.`Pid` = `p`.`P_id` ;
+
+-- --------------------------------------------------------
+
+--
+-- 檢視表結構 `mgr_proj`
+--
+DROP TABLE IF EXISTS `mgr_proj`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `mgr_proj`  AS  select `project`.`P_name` AS `P_name`,`project`.`P_id` AS `P_id`,`project`.`start_date` AS `start_date`,`project`.`end_date` AS `end_date`,`location`.`loc_addr` AS `loc_addr` from (`project` join `location`) where `project`.`P_id` = `location`.`loc_pid` ;
+
+-- --------------------------------------------------------
+
+--
+-- 檢視表結構 `mgr_proj_info`
+--
+DROP TABLE IF EXISTS `mgr_proj_info`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `mgr_proj_info`  AS  select `p`.`P_id` AS `P_id`,`p`.`P_name` AS `P_name`,`p`.`start_date` AS `start_date`,`p`.`end_date` AS `end_date`,`l`.`loc_addr` AS `loc_addr`,`p`.`detail` AS `p_detail`,`p`.`num_req` AS `num_req`,`p`.`client` AS `client`,`e`.`emp_id` AS `lead_id`,`e`.`emp_name` AS `lead_name` from (((`project` `p` join `location` `l`) join `project_member` `pm`) join `employee` `e`) where `pm`.`emp_id` = `e`.`emp_id` and `pm`.`Pid` = `p`.`P_id` and `p`.`P_id` = `l`.`loc_pid` and `pm`.`lead.flag` = '1' group by `p`.`P_id` ;
+
+-- --------------------------------------------------------
+
+--
+-- 檢視表結構 `mgr_proj_info_emp`
+--
+DROP TABLE IF EXISTS `mgr_proj_info_emp`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `mgr_proj_info_emp`  AS  select `pm`.`Pid` AS `Pid`,`e`.`emp_id` AS `emp_id`,`e`.`emp_name` AS `emp_name`,`pm`.`detail` AS `emp_detail` from (`project_member` `pm` join `employee` `e`) where `pm`.`emp_id` = `e`.`emp_id` ;
+
+--
+-- 已傾印資料表的索引
 --
 
 --
--- Indexes for table `employee`
+-- 資料表索引 `employee`
 --
 ALTER TABLE `employee`
   ADD PRIMARY KEY (`emp_id`);
 
 --
--- Indexes for table `location`
+-- 資料表索引 `location`
 --
 ALTER TABLE `location`
   ADD PRIMARY KEY (`loc_pid`);
 
 --
--- Indexes for table `project`
+-- 資料表索引 `project`
 --
 ALTER TABLE `project`
   ADD PRIMARY KEY (`P_id`);
 
 --
--- Indexes for table `project_member`
+-- 資料表索引 `project_member`
 --
 ALTER TABLE `project_member`
   ADD PRIMARY KEY (`Pid`,`emp_id`),
   ADD KEY `Prj_mem empid` (`emp_id`);
 
 --
--- Constraints for dumped tables
+-- 已傾印資料表的限制式
 --
 
 --
--- Constraints for table `location`
+-- 資料表的限制式 `location`
 --
 ALTER TABLE `location`
   ADD CONSTRAINT `location_ibfk_1` FOREIGN KEY (`loc_pid`) REFERENCES `project` (`P_id`);
 
 --
--- Constraints for table `project_member`
+-- 資料表的限制式 `project_member`
 --
 ALTER TABLE `project_member`
   ADD CONSTRAINT `Prj_mem empid` FOREIGN KEY (`emp_id`) REFERENCES `employee` (`emp_id`),
