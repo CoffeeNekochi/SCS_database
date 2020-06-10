@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 10, 2020 at 11:08 AM
+-- Generation Time: Jun 10, 2020 at 02:48 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `employee` (
   `emp_id` char(10) NOT NULL,
   `emp_name` varchar(30) NOT NULL,
-  `tel.` char(16) NOT NULL,
+  `tel` char(16) NOT NULL,
   `rating` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -38,7 +38,7 @@ CREATE TABLE `employee` (
 -- Dumping data for table `employee`
 --
 
-INSERT INTO `employee` (`emp_id`, `emp_name`, `tel.`, `rating`) VALUES
+INSERT INTO `employee` (`emp_id`, `emp_name`, `tel`, `rating`) VALUES
 ('E00001', '陳小春', '886934154834', NULL),
 ('E00002', '魏小庭', '866926710519', NULL),
 ('E00003', '曾小芳', '866925542827', NULL),
