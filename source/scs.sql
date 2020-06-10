@@ -2,10 +2,17 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
+<<<<<<< HEAD
 -- 主機： 127.0.0.1
 -- 產生時間： 2020-06-10 17:54:41
 -- 伺服器版本： 10.4.11-MariaDB
 -- PHP 版本： 7.4.6
+=======
+-- Host: 127.0.0.1
+-- Generation Time: Jun 10, 2020 at 02:48 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.5
+>>>>>>> master
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
