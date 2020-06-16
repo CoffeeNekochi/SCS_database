@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>專案列表 | 員工派遣系統</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css\w3school.css">
+        <link rel="stylesheet" href="css\emp_home.css">
+        <link rel="stylesheet" href="css\form.css">
+        <link rel="stylesheet" href="css\sidebar.css">
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css">
+        <link rel="stylesheet" href="css\project_list.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+    
+    </head>
+    <body>
+        <!--Sidebar-->
+        <div class="w3-sidebar w3-bar-block w3-collapse w3-card" style="width:200px;" id="mySidebar">
+            <button class="w3-bar-item w3-button w3-large w3-hide-large" onclick="w3_close()">Close &times;</button>
+            <a href="emp_home.html" class="w3-bar-item side_header">首頁</a>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="emp_project.html"><img src="img\project_main.png"><span class="">專案列表</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="img\employee.png"><span class="">個人資料</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="img\calender.png"><span class="">Cocaine</span></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+         <!-- Head -->
+         <div class="w3-main" style="margin-left:200px">
+            <div class="w3-deep-purple">
+                <!--nav-menu-button-->
+                <button class="w3-button w3-deep-purple w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</button>
+                <!--Content-title-->
+                <div class="w3-container">
+                    <h1>專案列表</h1> <!--GET-USER-ID-->
+                </div>
+            </div>
+            <!--table-->
+            <div class="container-table_project">
+                <div class="wrap-table_project">
+                    <table class="table_project">
+                        <thead>
+                            <tr class="table_project-head">
+                                <th class="column1">專案名稱</th>
+                                <th class="column2">專案編號</th>
+                                <th class="column3">開始時間</th>
+                                <th class="column3">結束時間</th>
+                                <th class="column5" style="text-align: center;">地點</th>
+                                <th class="column6" style="text-align: center;">動作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="column1 bold">"P_name"</td>
+                                <td class="column2">'P_id'</td>
+                                <td class="column3">'start_date'</td>
+                                <td class="column4">'end_date'</td>
+                                <td class="column5">'location'</td>
+                                <td class="column6">
+                                    <input type="button" name="edit" value="查看" id="view1" onclick="document.getElementById('dataModal').style.display='block'" class="button button-view edit_data"/>
+                                </td>
+                            </tr>
+                            <!---->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagi">
+                    <table class="pagi_table">
+                        <tr>
+                            <td>
+                                <p>共 '$data_nums.' 筆-在 '.$page.' 頁-共 '.$pages.' 頁'</p>
+                            </td>
+                            <td>
+                                <div class="pagination">
+                                    <a href="#" class="active">1</a>
+                                    <a href="#">2</a>
+                                    <a href="#">3</a>
+                                    <a href="#">4</a>
+                                    <a href="#">5</a>
+                                    <a href="#">6</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <script>
+            function w3_open() {
+              document.getElementById("mySidebar").style.display = "block";
+            }
+    
+            function w3_close() {
+              document.getElementById("mySidebar").style.display = "none";
+            }
+            </script>
+    </body>
+</html>
+<!-- project data view-->
+<div id="dataModal" class="w3-modal fade">
+    <div class="w3-modal-content radius w3-animate-zoom">  
+         <div class="w3-container radius" style="background-color: white;">  
+            <span onclick="document.getElementById('dataModal').style.display='none'" class="w3-button w3-display-topright"  data-dismiss="modal">&times;</span>
+            <h3>專案詳情</h3><hr>
+            <div class="modal-body" id="project_detail">
+                <table class="w3-table tab-pid">
+                    <tr>
+                        <th class="bold2">專案編號</th>
+                        <td>P00000</td>
+                    </tr>
+                </table>
+                <table class="w3-table tab-pname">
+                    <tr>
+                        <th class="bold2">專案名稱</th>
+                        <td>P00000</td>
+                    </tr>
+                </table>
+                <table class="w3-table tab-time">
+                    <tr>
+                        <th class="bold2">開始時間</th>
+                        <td>s_time</td>
+                    </tr>
+                    <tr>
+                        <th class="bold2">結束時間</th>
+                        <td>e_time</td>
+                    </tr>
+                </table>
+                <table class="w3-table tab-location">
+                    <tr>
+                        <th class="bold2">派遣地點</th>
+                        <td>location</td>
+                    </tr>
+                </table>
+                <table class="w3-table tab-detail">
+                    <tr>
+                        <th class="bold2">工作描述</th>
+                        <td>detail</td>
+                    </tr>
+                </table>
+                <table class="w3-table tab-num">
+                    <tr>
+                        <th class="bold2">委託單位</th>
+                        <td>num</td>
+                    </tr>
+                    <tr>
+                        <th class="bold2">領隊</th>
+                        <td>E_id&emsp;E_name</td>
+                    </tr>
+                </table>
+                
+                <table class="w3-table tab-emp">
+                    <tr>
+                        <th class="bold2">員工</th>
+                        <th class="bold2" style="width: 70%;">工作詳情</th>
+                    </tr>
+                    <tr>
+                        <td class="bold2">E_id&emsp;E_name</td>
+                        <td>job_detail</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <button type="button" onclick="document.getElementById('dataModal').style.display='none'" class="button-close fl-lf" data-dismiss="modal">Close</button>  
+         </div>  
+    </div>  
+</div>
+<script>
+    $("#search_emp").chosen();
+    $(document).ready(function(){   
+         $(document).on('click', '.edit_data', function(){  
+              var project_id = $(this).attr("P_id");  
+              $.ajax({  
+                   url:"fetch.php",  
+                   method:"POST",  
+                   data:{project_id:project_id},  
+                   dataType:"json",  
+                   success:function(data){  
+                        $('#name').val(data.name);  
+                        $('#address').val(data.address);  
+                        $('#gender').val(data.gender);  
+                        $('#designation').val(data.designation);  
+                        $('#age').val(data.age);  
+                        $('#employee_id').val(data.id);  
+                        $('#insert').val("Update");  
+                        $('#edit_data_Modal').modal('show');  
+                   }  
+              });  
+         });  
+         $('#insert_form').on("submit", function(event){  
+              event.preventDefault();  
+              if($('#name').val() == "")  
+              {  
+                   alert("Name is required");  
+              }  
+              else if($('#address').val() == '')  
+              {  
+                   alert("Address is required");  
+              }  
+              else if($('#designation').val() == '')  
+              {  
+                   alert("Designation is required");  
+              }  
+              else if($('#age').val() == '')  
+              {  
+                   alert("Age is required");  
+              }  
+              else  
+              {  
+                   $.ajax({  
+                        url:"insert.php",  
+                        method:"POST",  
+                        data:$('#insert_form').serialize(),  
+                        beforeSend:function(){  
+                             $('#insert').val("Inserting");  
+                        },  
+                        success:function(data){  
+                             $('#insert_form')[0].reset();  
+                             $('#add_data_Modal').modal('hide');  
+                             $('#employee_table').html(data);  
+                        }  
+                   });  
+              }  
+         });  
+         $(document).on('click', '.view_data', function(){  
+              var employee_id = $(this).attr("id");  
+              if(employee_id != '')  
+              {  
+                   $.ajax({  
+                        url:"select.php",  
+                        method:"POST",  
+                        data:{employee_id:employee_id},  
+                        success:function(data){  
+                             $('#employee_detail').html(data);  
+                             $('#dataModal').modal('show');  
+                        }  
+                   });  
+              }            
+         });  
+    });  
+    </script>

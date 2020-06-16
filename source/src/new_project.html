@@ -8,12 +8,11 @@
         <link rel="stylesheet" href="css\home.css">
         <link rel="stylesheet" href="css\form.css">
         <link rel="stylesheet" href="css\sidebar.css">
-        <script src="js/home.js"></script>
     </head>
     <body>
         <!--Sidebar-->
         <div class="w3-sidebar w3-bar-block w3-collapse w3-card" style="width:200px;" id="mySidebar">
-            <button class="w3-bar-item w3-button w3-large w3-hide-large white" onclick="w3_close()">Close &times;</button>
+            <button class="w3-bar-item w3-button w3-large w3-hide-large" onclick="w3_close()">Close &times;</button>
             <a href="mgr_home.html" class="w3-bar-item side_header">首頁</a>
             <nav class="sidebar-nav">
                 <ul>
@@ -29,10 +28,18 @@
                     </ul>
                   </li>
                   <li>
-                    <a href="mgr_employee.html"><img src="img\staff.png"><span>員工管理</span></a>
+                    <a><img src="img\staff.png"><span>員工</span></a>
+                    <ul class="nav-flyout">
+                      <li>
+                        <a href="#"><img src="img\employee.png">員工列表</a>
+                      </li>
+                      <li>
+                        <a href="#"><img src="img\new_emp.png">新增員工</a>
+                      </li>
+                    </ul>
                   </li>
                   <li>
-                    <a href="#"><img src="img\calender.png"><span class="">行事歷</span></a>
+                    <a href="#"><img src="img\calender.png"><span class="">Cocaine</span></a>
                   </li>
                 </ul>
               </nav>
@@ -97,7 +104,13 @@
             <p>Type Your Email Again</p>
         </div>
         <script>
-            
-        </script>
+            function w3_open() {
+              document.getElementById("mySidebar").style.display = "block";
+            }
+    
+            function w3_close() {
+              document.getElementById("mySidebar").style.display = "none";
+            }
+            </script>
     </body>
 </html>

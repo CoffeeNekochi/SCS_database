@@ -33,7 +33,6 @@
     <head>
         <title>專案管理 | 員工派遣系統</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta charset="utf-8">
         <link rel="stylesheet" href="css\w3school.css">
         <link rel="stylesheet" href="css\home.css">
         <link rel="stylesheet" href="css\form.css">
@@ -43,12 +42,11 @@
         <link rel="stylesheet" href="css\project_list.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
-        <script src="js/home.js"></script>
         
     </head>
     <body>
         <!--Sidebar-->
-        <div class="w3-sidebar w3-bar-block w3-collapse w3-card white" style="width:200px;" id="mySidebar">
+        <div class="w3-sidebar w3-bar-block w3-collapse w3-card" style="width:200px;" id="mySidebar">
             <button class="w3-bar-item w3-button w3-large w3-hide-large" onclick="w3_close()">Close &times;</button>
             <a href="mgr_home.html" class="w3-bar-item side_header">首頁</a>
             <nav class="sidebar-nav">
@@ -65,10 +63,18 @@
                     </ul>
                   </li>
                   <li>
-                    <a href="mgr_employee.html"><img src="img\staff.png"><span>員工管理</span></a>
+                    <a><img src="img\staff.png"><span>員工</span></a>
+                    <ul class="nav-flyout">
+                      <li>
+                        <a href="#"><img src="img\employee.png">員工列表</a>
+                      </li>
+                      <li>
+                        <a href="#"><img src="img\new_emp.png">新增員工</a>
+                      </li>
+                    </ul>
                   </li>
                   <li>
-                    <a href="#"><img src="img\calender.png"><span class="">行事歷</span></a>
+                    <a href="#"><img src="img\calender.png"><span class="">Cocaine</span></a>
                   </li>
                 </ul>
               </nav>
@@ -200,6 +206,15 @@
                 </div>
             </div>
         </div>
+        <script>
+            function w3_open() {
+              document.getElementById("mySidebar").style.display = "block";
+            }
+    
+            function w3_close() {
+              document.getElementById("mySidebar").style.display = "none";
+            }
+            </script>
     </body>
 </html>
 <!-- project data view-->
@@ -261,7 +276,7 @@
                 <table class="w3-table tab-emp">
                     <tr>
                         <th class="bold2">員工</th>
-                        <th class="bold2" style="width: 70%;">工作详情</th>
+                        <th class="bold2" style="width: 70%;">工作詳情</th>
                     </tr>
                     <tr>
                         <td class="bold2">E_id&emsp;E_name</td>
@@ -319,18 +334,18 @@
                                 <input type="text" class="input-field" placeholder="輸入委託者姓名" name="client" required/>
                             </label>
                             <div class="member_job_list">
-                                <h4 style="padding-top: 20px;">员工委派</h4><hr>
+                                <h4 style="padding-top: 20px;">員工委派</h4><hr>
                                 <table style="margin-bottom: 20px;">
                                     <tr>
-                                        <th class="bold2">员工</th>
-                                        <th class="bold2" style="width: 390px;">工作详情</th>
+                                        <th class="bold2">員工</th>
+                                        <th class="bold2" style="width: 390px;">工作詳情</th>
                                     </tr>
                                     <!-- 读取人数需求数 生成多个 员工工作输入表-->
                                     <tr>
                                         <td>
                                             <label for="member">
                                                 <select id="search_emp" name="search_emp">
-                                                    <option value="#">-- 选择员工 --</option>
+                                                    <option value="#">-- 選擇員工 --</option>
                                                     <option value="#">李焕良 E00001</option>
                                                     <option value="#">Simon Ghost E00002</option>
                                                     <option value="#">David Maso E00003</option>
