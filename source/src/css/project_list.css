@@ -2,7 +2,7 @@ body{
 	background-image: url("../img/login_bg.png");
 }
 .chosen-container.chosen-container-single {
-  width: 180px !important; /* or any value that fits your needs */
+  width: 140px !important; /* or any value that fits your needs */
 }
 /*############### tabel css ###############*/
 .container-table_project {
@@ -71,7 +71,9 @@ tbody tr:hover {
 }
 .column4 {
     width: 260px;
+    max-width: 300px;
     text-align: left;
+    overflow: auto;
 }
 .column5 {
     width: 112px;
@@ -143,6 +145,9 @@ tbody tr:hover {
 }
 .red{
   color: red;
+}
+.gray {
+  color: #808080;
 }
 /*############### pagination css ###############*/
 .pagi{
@@ -227,6 +232,12 @@ tbody tr:hover {
 .tab-pid tr th{
   width: 100px;
 }
+.tab-w100_80 { /* used: eid  new tab-pid*/
+  width: 180px;
+}
+.tab-w100_80 tr th {
+  width: 100px;
+}
 .tab-pname{
   float: right;
   width: 60%;
@@ -239,6 +250,12 @@ tbody tr:hover {
   width: 300px;
 }
 .tab-time tr th{
+  width: 100px;
+}
+.tab-w100_200 {  /* used: time, eid, etel  new tab-time*/
+  width: 300px;
+}
+.tab-w100_200 tr th{
   width: 100px;
 }
 .tab-location{
@@ -262,6 +279,15 @@ tbody tr:hover {
 .tab-num tr th{
   width: 30%;
 }
+.tab-w30p_5p {  /* used: rating  new tab-num*/
+  width: 35%;
+}
+.tab-w30p_5p tr th {
+  width: 30%;
+}
+.tab-w30p_5p tr td {
+  overflow: auto;
+}
 .tab-num tr td{
   width: 70px;
 }
@@ -269,6 +295,12 @@ tbody tr:hover {
   float: right;
   width: 60%;
   margin-bottom: 80px;
+}
+.tab-works-on {  /* used: works_on detail */
+  margin-bottom: 20px;
+}
+.tab-works-on tr th{
+  width: unset;
 }
 .tab-location tr th{
   width: 100px;
