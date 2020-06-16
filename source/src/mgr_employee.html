@@ -31,9 +31,9 @@
         ?>
     -->
     <head>
-        <title>專案管理 | 員工派遣系統</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>專案列表 | 員工派遣系統</title>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css\w3school.css">
         <link rel="stylesheet" href="css\home.css">
         <link rel="stylesheet" href="css\form.css">
@@ -48,8 +48,8 @@
     </head>
     <body>
         <!--Sidebar-->
-        <div class="w3-sidebar w3-bar-block w3-collapse w3-card white" style="width:200px;" id="mySidebar">
-            <button class="w3-bar-item w3-button w3-large w3-hide-large" onclick="w3_close()">Close &times;</button>
+        <div class="w3-sidebar w3-bar-block w3-collapse w3-card" style="width:200px;" id="mySidebar">
+            <button class="w3-bar-item w3-button w3-large w3-hide-large white" onclick="w3_close()">Close &times;</button>
             <a href="mgr_home.html" class="w3-bar-item side_header">首頁</a>
             <nav class="sidebar-nav">
                 <ul>
@@ -81,26 +81,20 @@
                 <button class="w3-button w3-teal w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</button>
                 <!--Content-title-->
                 <div class="w3-container">
-                    <h1>專案管理</h1>
+                    <h1>員工管理</h1>
                 </div>
             </div>
             <!--Main-->
-            <div>
-                <button type="button" class="button-add button-change" onclick="window.location.href='new_project.html';">新增專案</button>
-            </div>
             <!--table-->
             <div class="container-table_project">
                 <div class="wrap-table_project">
                     <table class="table_project">
                         <thead>
                             <tr class="table_project-head">
-                                <th class="column1">專案名稱</th>
-                                <th class="column2">專案編號</th>
-                                <th class="column3">開始時間</th>
-                                <th class="column3">結束時間</th>
-                                <th class="column5">地點</th>
-                                <th class="column6" style="text-align: center;">已委派</th>
-                                <th class="column7">動作</th>
+                                <th class="column1">員工名稱</th>
+                                <th class="column2">員工編號</th>
+                                <th class="column4" style="max-width: 300px;">評價    </th>
+                                <th class="column5">動作    </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -144,15 +138,12 @@
                             -->
                             <!-- test example (need to delete in php)-->
                             <tr>
-                                <td class="column1 bold">"P_name"</td>
-                                <td class="column2">'P_id'</td>
-                                <td class="column3">'start_date'</td>
-                                <td class="column3">'end_date'</td>
-                                <td class="column4">'location'</td>
-                                <td class="column5 red">&#10008;</td>
-                                <td class="column6">
-                                    <input type="button" name="edit" value="查看" id="view1" onclick="document.getElementById('dataModal').style.display='block'" class="button button-view edit_data"/>
-                                    <input type="button" name="view" value="修改" id="change2" onclick="document.getElementById('edit_data_Modal').style.display='block'" class="button button-change"/>
+                                <td class="column1">"P_name"</td>
+                                <td class="column2">'P_id'  </td>
+                                <td class="column4">懶惰</td>
+                                <td class="column5">
+                                    <input type="button" name="edit" value="查看"     id="view1"    onclick="document.getElementById('dataModal').style.display='block'"        class="button button-view edit_data"/>
+                                    <input type="button" name="view" value="修改評價" id="change2"  onclick="document.getElementById('edit_emp_Modal').style.display='block'"   class="button button-change"/>
                                 </td>
                             </tr>
                             <!---->
@@ -202,154 +193,85 @@
         </div>
     </body>
 </html>
-<!-- project data view-->
+<!-- employee data view-->
 <div id="dataModal" class="w3-modal fade">
     <div class="w3-modal-content radius w3-animate-zoom">  
          <div class="w3-container radius" style="background-color: white;">  
-            <span onclick="document.getElementById('dataModal').style.display='none'" class="w3-button w3-display-topright"  data-dismiss="modal">&times;</span>
-            <h3>專案詳情</h3><hr>
+            <span onclick="document.getElementById('dataModal').style.display='none'" class="w3-button w3-display-topright"  data-dismiss="w3-modal">&times;</span>
+            <h3>員工詳情</h3><hr>
             <div class="modal-body" id="project_detail">
-                <table class="w3-table tab-pid">
+                <table class="w3-table tab-w100_80">
                     <tr>
-                        <th class="bold2">專案編號</th>
-                        <td>P00000</td>
+                        <th class="bold2">員工編號</th>
+                        <td>E00000</td>
                     </tr>
                 </table>
-                <table class="w3-table tab-pname">
+
+                <table class="w3-table tab-w100_200">
                     <tr>
-                        <th class="bold2">專案名稱</th>
-                        <td>P00000</td>
+                        <th class="bold2">員工名稱</th>
+                        <td>emp_name</td>
+                    </tr>
+                    <tr>
+                        <th class="bold2">電話號碼</th>
+                        <td>886901123456</td>
                     </tr>
                 </table>
-                <table class="w3-table tab-time">
+
+                <table class="w3-table tab-w30p_5p">
                     <tr>
-                        <th class="bold2">開始時間</th>
-                        <td>s_time</td>
-                    </tr>
-                    <tr>
-                        <th class="bold2">結束時間</th>
-                        <td>e_time</td>
-                    </tr>
-                </table>
-                <table class="w3-table tab-location">
-                    <tr>
-                        <th class="bold2">派遣地點</th>
-                        <td>location</td>
-                    </tr>
-                </table>
-                <table class="w3-table tab-detail">
-                    <tr>
-                        <th class="bold2">工作描述</th>
-                        <td>detail</td>
-                    </tr>
-                </table>
-                <table class="w3-table tab-num">
-                    <tr>
-                        <th class="bold2">需求人數</th>
-                        <td>num</td>
-                    </tr>
-                    <tr>
-                        <th class="bold2">委託單位</th>
-                        <td>num</td>
-                    </tr>
-                    <tr>
-                        <th class="bold2">領隊</th>
-                        <td>E_id&emsp;E_name</td>
+                        <th class="bold2">工作評價</th>
+                        <td>懶散</td>
                     </tr>
                 </table>
                 
-                <table class="w3-table tab-emp">
+                <table class="w3-table tab-works-on">
                     <tr>
-                        <th class="bold2">員工</th>
-                        <th class="bold2" style="width: 70%;">工作详情</th>
+                        <th class="bold2" style="width: 100px;">負責專案</th>
+                        <th class="bold2" style="width: 300px;">專案名稱</th>
+                        <th class="bold2" style="width: 60px;"> 領隊    </th>
+                        <th class="bold2">                      工作详情</th>
                     </tr>
                     <tr>
-                        <td class="bold2">E_id&emsp;E_name</td>
-                        <td>job_detail</td>
+                        <td>P00000</td>
+                        <td>P_name</td>
+                        <td class="red">&#10008;</td>
+                        <!-- <td class="green">&#10004;</td>-->
+                        <td>P_detail</td>
                     </tr>
                 </table>
             </div>
             
-            <button type="button" onclick="document.getElementById('dataModal').style.display='none'" class="button-close fl-lf" data-dismiss="modal">Close</button>  
+            <button type="button" onclick="document.getElementById('dataModal').style.display='none'" class="button-close fl-lf" data-dismiss="w3-modal">關閉</button>  
          </div>  
     </div>  
 </div>
-<!-- project data edit-->
-<div id="edit_data_Modal" class="w3-modal fade">
+<!-- emp rating edit-->
+<div id="edit_emp_Modal" class="w3-modal fade">
     <div class="w3-modal-content radius w3-animate-zoom">  
          <div class="w3-container radius" style="background-color: white;">  
-            <span onclick="document.getElementById('edit_data_Modal').style.display='none'" class="w3-button w3-display-topright"  data-dismiss="modal">&times;</span>
+            <span onclick="document.getElementById('edit_emp_Modal').style.display='none'" class="w3-button w3-display-topright"  data-dismiss="modal">&times;</span>
             <h3>專案詳情</h3><hr>
             <div class="modal-body">
                 <form action="/action_page.php" method="post" id="insert_form">
                     <div class="w3-container">
-                        <table class="project-head">
+                        <table class="w3-table tab-w100_200 gray">
                             <tr>
                                 <th>專案編號</th>
-                                <th id="pid">[Pid]</th>         <!--pid-->
+                                <td id="pid">[Pid]</td>         <!--eid-->
+                            </tr>
+                        </table>
+                        <table class="w3-table tab-w100_200 gray">
+                            <tr>
+                                <th>員工名稱</th>               <!--ename-->
+                                <td id="pname">[emp_name]</td>
                             </tr>
                         </table>
                         <div class="form-style-1">
-                            <label for="p_name">                <!--pname-->
-                                <span>專案名稱 <span class="required">*</span></span>
-                                <input type="text" class="input-field" placeholder="輸入專案名稱" name="p_name" required/>
-                            </label>
-                            <label for="s_time">                <!--s_time-->
-                                <span>開始時間 <span class="required">*</span></span>
-                                <input type="datetime-local" class="datetime-field" name="s_time" required/>
-                            </label>
-                            <label for="e_time">                <!--e_time-->
-                                <span>結束時間 <span class="required">*</span></span>
-                                <input type="datetime-local" class="datetime-field" name="e_time" required/>
-                            </label>
-                            <label for="location">              <!--location-->
-                                <span>派遣地點 <span class="required">*</span></span>
-                                <textarea class="textarea-field" placeholder="輸入地點（市-區-路-號）" name="location" required></textarea>
-                            </label>
-                            <label for="detail">                <!--detail-->
-                                <span>工作描述</span>
+                            <label for="detail">                <!--rating-->
+                                <span>工作評價</span>
                                 <textarea class="textarea-field" name="detail"></textarea>
                             </label>
-                            <label for="num_req">               <!--num_req-->
-                                <span>人數需求 <span class="required">*</span></span>
-                                <input type="number" class="number-field" name="num_req" min="0" />
-                            </label>
-                            <label for="client">                <!--client-->
-                                <span>委託單位 <span class="required">*</span></span>
-                                <input type="text" class="input-field" placeholder="輸入委託者姓名" name="client" required/>
-                            </label>
-                            <div class="member_job_list">
-                                <h4 style="padding-top: 20px;">员工委派</h4><hr>
-                                <table style="margin-bottom: 20px;">
-                                    <tr>
-                                        <th class="bold2">员工</th>
-                                        <th class="bold2" style="width: 390px;">工作详情</th>
-                                    </tr>
-                                    <!-- 读取人数需求数 生成多个 员工工作输入表-->
-                                    <tr>
-                                        <td>
-                                            <label for="member">
-                                                <select id="search_emp" name="search_emp">
-                                                    <option value="#">-- 选择员工 --</option>
-                                                    <option value="#">李焕良 E00001</option>
-                                                    <option value="#">Simon Ghost E00002</option>
-                                                    <option value="#">David Maso E00003</option>
-                                                    
-                                                    <!--
-                                                        while($row = mysqli_fetch_array()){
-                                                            echo "<option value="$row[emp_id]">$row[emp_name] $row[emp_id]</option>";
-                                                        }
-                                                    -->
-                                                </select>
-                                            </label>
-                                        </td>
-                                        <td>
-                                            <textarea class="textarea-field2" name="job_detail"></textarea>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                            
                             <div class="submit">
                                 <label><input type="submit" style="background-color: green;" value="Submit" /></label>
                             </div>
@@ -357,12 +279,12 @@
                     </div>
                 </form>
             </div>
-            <button type="button" onclick="document.getElementById('edit_data_Modal').style.display='none'" class="button-close" data-dismiss="modal">Close</button>  
+            <hr>
+            <button type="button" onclick="document.getElementById('edit_emp_Modal').style.display='none'" class="button-close" data-dismiss="modal">Close</button>  
          </div>  
     </div>  
 </div>
 <script>
-    $("#search_emp").chosen();
     $(document).ready(function(){   
          $(document).on('click', '.edit_data', function(){  
               var project_id = $(this).attr("P_id");  
