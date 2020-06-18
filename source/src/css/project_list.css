@@ -85,6 +85,10 @@ tbody tr:hover {
     text-align: center;
     padding-right: 10px;
 }
+.column7 {
+  width: 260px;
+  padding-right: 10px;
+}
 /*############### button css ###############*/
 .button{
     border: none;
@@ -122,11 +126,23 @@ tbody tr:hover {
 .button-view {
 	background: rgb(76, 175, 80);
 }
+.button-delete {
+  border: none;
+  padding: 8px 15px 8px 15px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  color: #fff;
+  border-radius: 3px;
+	background: red;
+}
 .button-change:hover {
 	background: #EA7B00;
 }
 .button-view:hover {
 	background: rgb(137, 175, 76);
+}
+.button-delete:hover {
+	background: rgb(255, 81, 0);
 }
 /*############### text css ###############*/
 .bold {
@@ -307,6 +323,9 @@ tbody tr:hover {
 }
 .fl-lf{
   float: left;
+}
+.fl-rg{
+  float: right;
 }
 
 /*############### media desplay css ###############*/

@@ -151,8 +151,9 @@
                                 <td class="column4">'location'</td>
                                 <td class="column5 red">&#10008;</td>
                                 <td class="column6">
-                                    <input type="button" name="edit" value="查看" id="view1" onclick="document.getElementById('dataModal').style.display='block'" class="button button-view edit_data"/>
-                                    <input type="button" name="view" value="修改" id="change2" onclick="document.getElementById('edit_data_Modal').style.display='block'" class="button button-change"/>
+                                    <input type="button" name="edit" value="查看" id="view1"   onclick="document.getElementById('dataModal').style.display='block'"         class="button button-view edit_data"/>
+                                    <input type="button" name="view" value="修改" id="change2" onclick="document.getElementById('edit_data_Modal').style.display='block'"   class="button button-change view_data"/>
+                                    <input type="button" name="edit" value="刪除" id="delete3" onclick="document.getElementById('delete_data_Modal').style.display='block'" class="button button-delete view_data"/>
                                 </td>
                             </tr>
                             <!---->
@@ -361,8 +362,59 @@
          </div>  
     </div>  
 </div>
+<!-- delete data view-->
+<div id="delete_data_Modal" class="w3-modal fade">
+    <div class="w3-modal-content radius w3-animate-zoom">  
+         <div class="w3-container radius" style="background-color: white;">  
+            <span onclick="document.getElementById('delete_data_Modal').style.display='none'" class="w3-button w3-display-topright"  data-dismiss="modal">&times;</span>
+            <h3>確認要刪除嗎</h3><hr>
+            <div class="modal-body" id="project_detail_delete">
+                <table class="w3-table tab-pid">
+                    <tr>
+                        <th class="bold2">專案編號</th>
+                        <td>P00000</td>
+                    </tr>
+                </table>
+                <table class="w3-table tab-pname">
+                    <tr>
+                        <th class="bold2">專案名稱</th>
+                        <td>P00000</td>
+                    </tr>
+                </table>
+                <table class="w3-table tab-time">
+                    <tr>
+                        <th class="bold2">開始時間</th>
+                        <td>s_time</td>
+                    </tr>
+                    <tr>
+                        <th class="bold2">結束時間</th>
+                        <td>e_time</td>
+                    </tr>
+                </table>
+                <table class="w3-table tab-location">
+                    <tr>
+                        <th class="bold2">派遣地點</th>
+                        <td>location</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div style="padding-top: 120px; margin-left: 42%; margin-right: 42%;">
+                <hr>
+                <br>
+                <button type="button" onclick="is_remove();" class="button-delete fl-lf result-delete" data-dismiss="modal">刪除</button>  
+                <button type="button" onclick="document.getElementById('delete_data_Modal').style.display='none'" class="button-close fl-rg" data-dismiss="modal">取消</button>  
+            </div>
+            </div>  
+    </div>  
+</div>
 <script>
     $("#search_emp").chosen();
+    function is_remove(P_id){
+        if(confirm("確定要刪除此專案嗎？")){
+            window.location.href = "./remove.php?P_id=" + P_id;
+        }
+    }
     $(document).ready(function(){   
          $(document).on('click', '.edit_data', function(){  
               var project_id = $(this).attr("P_id");  
@@ -419,6 +471,21 @@
               }  
          });  
          $(document).on('click', '.view_data', function(){  
+              var employee_id = $(this).attr("id");  
+              if(employee_id != '')  
+              {  
+                   $.ajax({  
+                        url:"select.php",  
+                        method:"POST",  
+                        data:{employee_id:employee_id},  
+                        success:function(data){  
+                             $('#employee_detail').html(data);  
+                             $('#dataModal').modal('show');  
+                        }  
+                   });  
+              }            
+         });
+         $(document).on('click', '.result_data', function(){  
               var employee_id = $(this).attr("id");  
               if(employee_id != '')  
               {  

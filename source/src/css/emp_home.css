@@ -39,7 +39,7 @@ body{
     display: inline;
   }
   .block-button a .ico .icoh_back{
-    width: 55px;
+    width: 50px;
     display: none;
   }
   .block-button a .ico:hover .icoh_front{
