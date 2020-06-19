@@ -35,7 +35,7 @@
                 </tr>  
                 <tr>  
                      <td width="30%"><label>Age</label></td>  
-                     <td width="70%">'.$row["location"].' Year</td>  
+                     <td width="70%">'.$row["loc_addr"].' Year</td>  
                 </tr>  
            ';  
       }  
