@@ -60,7 +60,7 @@ if (empty($conn)){
                     <a href="mgr_employee.php"><img src="img\staff.png"><span>員工管理</span></a>
                   </li>
                   <li>
-                    <a href="#"><img src="img\calender.png"><span class="">行事歷</span></a>
+                    <a href="mgr_cal.php"><img src="img\calender.png"><span class="">行事歷</span></a>
                   </li>
                 </ul>
               </nav>

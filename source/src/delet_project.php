@@ -8,8 +8,8 @@ $client="client";
 $link=mysql_pconnect($P_name,$start_date,$end_date,$detail,$num_req,$client);
 
 mysql_query("set names utf8");
-
-$sql="DELETE FROM project WHERE id="$_GET[id];
+$id=$_GET["id"];
+$sql="DELETE FROM project WHERE id='$id'";
 $result=mysql_query($sql,$link);
 mysql_close($link);
 

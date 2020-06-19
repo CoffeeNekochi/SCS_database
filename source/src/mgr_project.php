@@ -60,25 +60,25 @@
         <!--Sidebar-->
         <div class="w3-sidebar w3-bar-block w3-collapse w3-card white" style="width:200px;" id="mySidebar">
             <button class="w3-bar-item w3-button w3-large w3-hide-large" onclick="w3_close()">Close &times;</button>
-            <a href="mgr_home.html" class="w3-bar-item side_header">首頁</a>
+            <a href="mgr_home.php" class="w3-bar-item side_header">首頁</a>
             <nav class="sidebar-nav">
                 <ul>
                   <li>
                     <a><img src="img\project.png"><span>專案</span></a>
                     <ul class="nav-flyout">
                       <li>
-                        <a href="mgr_project.html"><img src="img\project_main.png">專案管理</a>
+                        <a href="mgr_project.php"><img src="img\project_main.png">專案管理</a>
                       </li>
                       <li>
-                        <a href="new_project.html"><img src="img\new_project.png">新建專案</a>
+                        <a href="new_project.php"><img src="img\new_project.png">新建專案</a>
                       </li>
                     </ul>
                   </li>
                   <li>
-                    <a href="mgr_employee.html"><img src="img\staff.png"><span>員工管理</span></a>
+                    <a href="mgr_employee.php"><img src="img\staff.png"><span>員工管理</span></a>
                   </li>
                   <li>
-                    <a href="#"><img src="img\calender.png"><span class="">行事歷</span></a>
+                    <a href="mgr_cal.php"><img src="img\calender.png"><span class="">行事歷</span></a>
                   </li>
                 </ul>
               </nav>

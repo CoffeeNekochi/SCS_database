@@ -1,10 +1,14 @@
 <?php 
 header("Content-Type:text/html; charset=utf-8");
-$url="./mgr_home.php";
 session_start();
 $_SESSION['ac']=@$_POST["ac"];
 $_SESSION['pw']=@$_POST["pw"];
 $time=date("Y-m-d H:i:s");
+if($_SESSION['ac'][0]=='E'){
+  $url="./emp_home.php";
+}else{
+  $url="./mgr_home.php";
+}
 ?>
 
 <html>
