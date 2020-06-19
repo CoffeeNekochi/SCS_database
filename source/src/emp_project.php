@@ -58,11 +58,7 @@
                         <a href="emp_project.php"><img src="img\project.png"><span class="">專案列表</span></a>
                     </li>
                     <li>
-<<<<<<< HEAD
-                        <a href="#"><img src="img\calender.png"><span class="">行事歷</span></a>
-=======
-                        <a href="emp_cal.php"><img src="img\calender.png"><span class="">Cocaine</span></a>
->>>>>>> 6c8ece6321b488b6057bd1b5005acb6ae2e3c312
+                        <a href="emp_cal.php"><img src="img\calender.png"><span class="">行事歷</span></a>
                     </li>
                 </ul>
             </nav>

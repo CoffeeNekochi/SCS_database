@@ -1,14 +1,7 @@
 <?php
-
+    session_start();
     // Create connection
-    $conn = mysqli_connect("localhost", "root", "", "new_scs");
-
-    // Check connection
-    if ($conn) {
-        echo "Server is connected";
-    }else{
-        echo "Error";
-    }
+    $conn = mysqli_connect("localhost", $_SESSION["ac"], $_SESSION["pw"], "new_scs");
     $query = "	SELECT *
                 FROM mgr_proj S
                 WHERE NOT EXISTS(SELECT * FROM project_member R WHERE S.P_id = R.Pid )
