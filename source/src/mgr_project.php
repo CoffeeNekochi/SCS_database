@@ -144,9 +144,9 @@
                                     <td class="column4"><?php echo $row["loc_addr"]; ?></td>
                                     <td class="column5 green">&#10004;</td>
                                     <td class="column6">
-                                        <input type="button" name="view" value="查看" id="<?php echo $row["P_id"]; ?>" class="button button-view view_data" />
-                                        <input type="button" name="edit" value="修改" id="<?php echo $row["P_id"]; ?>"  data-toggle="modal"  data-target="#edit_data_Modal" class="button button-change edit_data" /> 
-                                        <input type="button" name="delete" value="刪除" id="<?php echo $row["P_id"]; ?>" class="button button-delete delete_data" style="background: red;" />
+                                        <input type="button" name="view" value="查看" id="<?php echo $row["P_id"]->P_id; ?>" class="button button-view view_data" />
+                                        <input type="button" name="edit" value="修改" id="<?php echo $row["P_id"]->P_id; ?>"  data-toggle="modal"  data-target="#edit_data_Modal" class="button button-change edit_data" /> 
+                                        <input type="button" name="delete" value="刪除" id="<?php echo $row["P_id"]->P_id; ?>" onclick="is_remove(id);" class="button button-delete delete_data" style="background: red;" />
                                     </td>
                                 </tr>
                                 <?php  
@@ -303,7 +303,7 @@
 <!-- delete data view-->
 <div id="delete_data_Modal" class="w3-modal fade">
     <div class="w3-modal-content radius w3-animate-zoom">  
-         <div class="w3-container radius" style="background-color: white;">  
+    <!--     <div class="w3-container radius" style="background-color: white;">  
             <span onclick="document.getElementById('delete_data_Modal').style.display='none'" class="w3-button w3-display-topright"  data-dismiss="modal">&times;</span>
             <h3>確認要刪除嗎</h3><hr>
             <div class="modal-body" id="project_detail_delete">
@@ -335,7 +335,7 @@
                         <td>location</td>
                     </tr>
                 </table>
-            </div>
+            </div>     
             
             <div style="padding-top: 120px; margin-left: 42%; margin-right: 42%;">
                 <hr>
@@ -343,15 +343,16 @@
                 <button type="button" onclick="is_remove();" class="button-delete fl-lf result-delete" data-dismiss="modal">刪除</button>  
                 <button type="button" onclick="document.getElementById('delete_data_Modal').style.display='none'" class="button-close fl-rg" data-dismiss="modal">取消</button>  
             </div>
-            </div>  
+        </div>   -->
     </div>  
 </div>
 <script>
     $("#search_emp").chosen();
     function is_remove(P_id){
         if(confirm("確定要刪除此專案嗎？")){
-            window.location.href = "./remove.php?P_id=" + P_id;
-        }
+            
+            window.location.href = "./delet_project.php?P_id=" +P_id;
+        }/*將P.id傳到delet_project*/ 
     }
     $(document).ready(function(){   
          $(document).on('click', '.edit_data', function(){  
