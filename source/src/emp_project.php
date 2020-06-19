@@ -18,6 +18,16 @@
     printf("Error: %s\n", mysqli_error($conn));
     exit();
     }
+    
+    $data_nums = mysqli_num_rows($result); //統計總比數
+    $per = 10; //每頁顯示項目數量
+    $pages = ceil($data_nums/$per); //取得不小於值的下一個整數
+    if (!isset($_GET["page"])){ //假如$_GET["page"]未設置
+        $page=1; //則在此設定起始頁數
+    } else {
+        $page = intval($_GET["page"]); //確認頁數只能夠是數值資料
+    }
+    $start = ($page-1)*$per; //每一頁開始的資料序號
 ?>
 <!DOCTYPE html>
 <html>
@@ -89,9 +99,14 @@
                                 <td class="column5"><?php echo $row["loc_addr"]; ?></td>
                                 <td class="column6">
                                     <input type="button" name="view" value="查看" id="<?php echo $row["P_id"]; ?>" class="button button-view view_data"/>
+                                    <?php
+                                        $flag = $row["lead_flag"];
+                                        if($row["lead_flag"] == 1){
+                                            echo "<input type='button' name='edit' value='修改' id=". $flag ." class='button button-change edit_data'/>";
+                                        }
+                                    ?>
                                 </td>
                             </tr>
-                            <!--<input type="button" name="edit" value="修改" id="'. $row["P_id"] .'" class="button button-change edit_data"/>-->
                             <?php  
                                }  
                             ?>
@@ -102,16 +117,21 @@
                     <table class="pagi_table">
                         <tr>
                             <td>
-                                <p>共 '$data_nums.' 筆-在 '.$page.' 頁-共 '.$pages.' 頁'</p>
+                                <?php   //分頁頁碼
+                                    echo "<p>共 ".$data_nums." 筆-在 ".$page." 頁-共 ".$pages." 頁";
+                                ?>
                             </td>
                             <td>
                                 <div class="pagination">
-                                    <a href="#" class="active">1</a>
-                                    <a href="#">2</a>
-                                    <a href="#">3</a>
-                                    <a href="#">4</a>
-                                    <a href="#">5</a>
-                                    <a href="#">6</a>
+                                        <?php
+                                            //分頁頁碼
+                                            for( $i=1 ; $i<=$pages ; $i++ ) {
+                                                if($i == $page)
+                                                    echo "<a href=?page=".$i.">".$i."</a> ";
+                                                else
+                                                    echo " 頁 <a href=?page=".$pages.">末頁</a><br /><br />";
+                                            }
+                                        ?>
                                 </div>
                             </td>
                         </tr>
