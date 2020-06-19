@@ -58,7 +58,7 @@
                         <a href="emp_project.html"><img src="img\project.png"><span class="">專案列表</span></a>
                     </li>
                     <li>
-                        <a href="#"><img src="img\calender.png"><span class="">Cocaine</span></a>
+                        <a href="#"><img src="img\calender.png"><span class="">行事歷</span></a>
                     </li>
                 </ul>
             </nav>

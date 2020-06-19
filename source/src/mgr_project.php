@@ -127,7 +127,7 @@
                                     <td class="column6">
                                         <input type="button" name="view" value="查看" id="<?php echo $row["P_id"]; ?>" class="button button-change view_data" />
                                         <input type="button" name="edit" value="修改" id="<?php echo $row["P_id"]; ?>" class="button button-view edit_data" />  
-                                        <input type="button" name="delete" value="刪除" id="<?php echo $row["P_id"]; ?>" class="button button-delete delete_data" style="background: red;" />
+                                        <input type="button" name="delete" value="刪除" id="<?php echo $row["P_id"]; ?>" onclick="deleteData(<?php echo $row['P_id'] ?>)" class="button button-delete delete_data" style="background: red;" />
                                     </td>
                                 </tr>
                                 <?php  
@@ -139,14 +139,14 @@
                                 <tr>
                                     <td class="column1 bold"><?php echo $row["P_name"]; ?></td>
                                     <td class="column2"><?php echo $row["P_id"]; ?></td>
-                                    <td class="column3"><?php echo $row["start_date"]; ?></td>
-                                    <td class="column3"><?php echo $row["end_date"]; ?></td>
+                                    <td class="column3"><?php echo date( 'Y-m-d H:i', strtotime($row["start_date"])); ?></td>
+                                    <td class="column3"><?php echo date( 'Y-m-d H:i', strtotime($row["end_date"])); ?></td>
                                     <td class="column4"><?php echo $row["loc_addr"]; ?></td>
                                     <td class="column5 green">&#10004;</td>
                                     <td class="column6">
-                                        <input type="button" name="view" value="查看" id="<?php echo $row["P_id"]->P_id; ?>" class="button button-view view_data" />
-                                        <input type="button" name="edit" value="修改" id="<?php echo $row["P_id"]->P_id; ?>"  data-toggle="modal"  data-target="#edit_data_Modal" class="button button-change edit_data" /> 
-                                        <input type="button" name="delete" value="刪除" id="<?php echo $row["P_id"]->P_id; ?>" onclick="is_remove(id);" class="button button-delete delete_data" style="background: red;" />
+                                        <input type="button" name="view" value="查看" id="<?php echo $row["P_id"]; ?>" class="button button-view view_data" />
+                                        <input type="button" name="edit" value="修改" id="<?php echo $row["P_id"]; ?>"  data-toggle="modal"  data-target="#edit_data_Modal" class="button button-change edit_data" /> 
+                                        <input type="button" name="delete" value="刪除" id="<?php echo $row["P_id"]; ?>" class="button button-delete delete_data" style="background: red;" />
                                     </td>
                                 </tr>
                                 <?php  
@@ -300,63 +300,22 @@
          </div>  
     </div>  
 </div>
-<!-- delete data view-->
-<div id="delete_data_Modal" class="w3-modal fade">
-    <div class="w3-modal-content radius w3-animate-zoom">  
-    <!--     <div class="w3-container radius" style="background-color: white;">  
-            <span onclick="document.getElementById('delete_data_Modal').style.display='none'" class="w3-button w3-display-topright"  data-dismiss="modal">&times;</span>
-            <h3>確認要刪除嗎</h3><hr>
-            <div class="modal-body" id="project_detail_delete">
-                <table class="w3-table tab-pid">
-                    <tr>
-                        <th class="bold2">專案編號</th>
-                        <td>P00000</td>
-                    </tr>
-                </table>
-                <table class="w3-table tab-pname">
-                    <tr>
-                        <th class="bold2">專案名稱</th>
-                        <td>P00000</td>
-                    </tr>
-                </table>
-                <table class="w3-table tab-time">
-                    <tr>
-                        <th class="bold2">開始時間</th>
-                        <td>s_time</td>
-                    </tr>
-                    <tr>
-                        <th class="bold2">結束時間</th>
-                        <td>e_time</td>
-                    </tr>
-                </table>
-                <table class="w3-table tab-location">
-                    <tr>
-                        <th class="bold2">派遣地點</th>
-                        <td>location</td>
-                    </tr>
-                </table>
-            </div>     
-            
-            <div style="padding-top: 120px; margin-left: 42%; margin-right: 42%;">
-                <hr>
-                <br>
-                <button type="button" onclick="is_remove();" class="button-delete fl-lf result-delete" data-dismiss="modal">刪除</button>  
-                <button type="button" onclick="document.getElementById('delete_data_Modal').style.display='none'" class="button-close fl-rg" data-dismiss="modal">取消</button>  
-            </div>
-        </div>   -->
-    </div>  
-</div>
 <script>
-    $("#search_emp").chosen();
-    function is_remove(P_id){
-        if(confirm("確定要刪除此專案嗎？")){
-            
-            window.location.href = "./delet_project.php?P_id=" +P_id;
-        }/*將P.id傳到delet_project*/ 
+    function deleteData(){
+        var id = str;
+        $.ajax({
+            type: "POST",
+            url: "delete.php?p=del",
+            data: "id="+id,
+            success: function(data){
+                
+            }
+
+        });
     }
     $(document).ready(function(){   
          $(document).on('click', '.edit_data', function(){  
-              var employee_id = $(this).attr("P_id");  
+              var employee_id = $(this).attr("id");  
               $.ajax({  
                    url:"mgr_prj_edit.php",  
                    method:"POST",  
@@ -366,7 +325,7 @@
                         $('#P_name').val(data.P_name);  
                         $('#start_date').val(data.start_date);  
                         $('#end_date').val(data.end_date);  
-                        $('#loc_addr').val(data.loc_addr);  
+                        $('#loc_addr').val(data.loc_addr);
                         $('#p_detail').val(data.p_detail);  
                         $('#num_req').val(data.num_req);
                         $('#client').val(data.client);  
