@@ -89,7 +89,7 @@
             </div>
             <!--Main-->
             <div>
-                <button type="button" class="button-add button-change" onclick="window.location.href='new_project.html';">新增專案</button>
+                <button type="button" class="button-add button-change" onclick="window.location.href='new_project.php';">新增專案</button>
             </div>
             <!--table-->
             <div class="container-table_project">
