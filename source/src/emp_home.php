@@ -16,7 +16,13 @@ session_start();
         <?php
         //登入資料庫
         $DBHOST = "localhost"; //主機位置
-        $conn = mysqli_connect( $DBHOST,$_SESSION["ac"],$_SESSION["pw"]); //連接資料庫
+        $conn = mysqli_connect( $DBHOST,$_SESSION["ac"],$_SESSION["pw"],"new_scs"); //連接資料庫
+        $ac=$_SESSION["ac"];
+        $query = "	SELECT *
+                    FROM emp_info
+                    WHERE emp_id = '$ac' ";
+        $result = mysqli_query($conn, $query);
+        $row = mysqli_fetch_array($result);
         if (empty($conn)){
             session_destroy();
             echo "無法連結資料庫";
@@ -35,7 +41,7 @@ session_start();
                         <a href="emp_project.php"><img src="img\project_main.png"><span class="">專案列表</span></a><!--href要改!!-->
                     </li>
                     <li>
-                        <a href="emp_cal.php"><img src="img\calender.png"><span class="">Cocaine</span></a>
+                        <a href="emp_cal.php"><img src="img\calender.png"><span class="">行事曆</span></a>
                     </li>
                 </ul>
             </nav>
@@ -47,7 +53,7 @@ session_start();
                 <button class="w3-button w3-deep-purple w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</button>
                 <!--Content-title-->
                 <div class="w3-container">
-                    <h1>早安你好！ <span> [GET ID]</span></h1> <!--GET-USER-ID-->
+                    <h1>早安你好！ <span><?php echo $row["emp_name"] ?></span></h1> <!--GET-USER-ID-->
                 </div>
             </div>
             <div class="w3-container">
