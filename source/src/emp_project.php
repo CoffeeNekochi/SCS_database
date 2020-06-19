@@ -1,8 +1,8 @@
 <?php
-
+    session_start();
     // Create connection
-    $conn = mysqli_connect("localhost", "root", "", "new_scs");
-
+    $conn = mysqli_connect("localhost", $_SESSION["ac"], $_SESSION["pw"], "new_scs");
+    $ac=$_SESSION["ac"];
     // Check connection
     if ($conn) {
         echo "Server is connected";
@@ -11,7 +11,7 @@
     }
     $query = "	SELECT *
                 FROM emp_proj
-                WHERE emp_id = 'E00001'
+                WHERE emp_id = '$ac'
                 ORDER BY P_id";
     $result = mysqli_query($conn, $query);
     if (!$result) {
@@ -51,14 +51,18 @@
         <!--Sidebar-->
         <div class="w3-sidebar w3-bar-block w3-collapse w3-card" style="width:200px;" id="mySidebar">
             <button class="w3-bar-item w3-button w3-large w3-hide-large" onclick="w3_close()">Close &times;</button>
-            <a href="emp_home.html" class="w3-bar-item side_header w3-deep-purple">首頁</a>
+            <a href="emp_home.php" class="w3-bar-item side_header w3-deep-purple">首頁</a>
             <nav class="sidebar-nav">
                 <ul>
                     <li>
-                        <a href="emp_project.html"><img src="img\project.png"><span class="">專案列表</span></a>
+                        <a href="emp_project.php"><img src="img\project.png"><span class="">專案列表</span></a>
                     </li>
                     <li>
+<<<<<<< HEAD
                         <a href="#"><img src="img\calender.png"><span class="">行事歷</span></a>
+=======
+                        <a href="emp_cal.php"><img src="img\calender.png"><span class="">Cocaine</span></a>
+>>>>>>> 6c8ece6321b488b6057bd1b5005acb6ae2e3c312
                     </li>
                 </ul>
             </nav>
