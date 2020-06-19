@@ -319,6 +319,21 @@
                                 <span>委託單位 <span class="required">*</span></span>
                                 <input type="text" class="input-field" placeholder="輸入委託者姓名" name="client" required/>
                             </label>
+                            <label for="leader">                <!--leader-->
+                                <span>領隊</span>
+                                <select id="search_emp" name="search_emp">
+                                    <option value="#">-- 选择员工 --</option>
+                                    <option value="#">李焕良 E00001</option>
+                                    <option value="#">Simon Ghost E00002</option>
+                                    <option value="#">David Maso E00003</option>
+                                    
+                                    <!--
+                                        while($row = mysqli_fetch_array()){
+                                            echo "<option value="$row[emp_id]">$row[emp_name] $row[emp_id]</option>";
+                                        }
+                                    -->
+                                </select>
+                            </label>
                             <div class="member_job_list">
                                 <h4 style="padding-top: 20px;">员工委派</h4><hr>
                                 <table style="margin-bottom: 20px;">
