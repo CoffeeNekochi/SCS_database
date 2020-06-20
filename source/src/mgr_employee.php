@@ -4,7 +4,7 @@
         <?php
         session_start();
         // Create connection
-        $conn = mysqli_connect("localhost", $_SESSION["ac"], $_SESSION["pw"], "new_scs");
+        $conn = mysqli_connect("localhost","root", "", "new_scs");
         $query = "	SELECT * FROM mgr_emp ORDER BY emp_id ";
         $result = mysqli_query($conn, $query);
         if (!$result) {
@@ -13,7 +13,7 @@
         }
 
         $data_nums = mysqli_num_rows($result); //統計總比數
-        $per = 10; //每頁顯示項目數量
+        $per = 15; //每頁顯示項目數量
         $pages = ceil($data_nums/$per); //取得不小於值的下一個整數
         if (!isset($_GET["page"])){ //假如$_GET["page"]未設置
             $page=1; //則在此設定起始頁數
@@ -36,7 +36,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
         <script src="js/home.js"></script>
-        
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    
     </head>
     <body>
         <!--Sidebar-->
@@ -98,8 +99,8 @@
                                     <td class="column2"><?php echo $row["emp_id"]; ?></td>
                                     <td class="column4" style="max-width: 300px;"><?php echo $row["rating"]; ?></td>
                                     <td class="column5">
-                                        <input type="button" name="view" value="查看" id="<?php echo $row["emp_id"]; ?>" class="button button-change view_data" />
-                                        <input type="button" name="edit" value="修改" id="<?php echo $row["emp_id"]; ?>" class="button button-view edit_data" />  
+                                        <input type="button" name="view" value="查看" id="<?php echo $row["emp_id"]; ?>" class="button button-view view_data" />
+                                        <input type="button" name="edit" value="修改" id="<?php echo $row["emp_id"]; ?>" class="button button-change edit_data" />  
                                     </td>
                                 </tr>
                                 <?php  
@@ -142,52 +143,12 @@
 <div id="dataModal" class="w3-modal fade">
     <div class="w3-modal-content radius w3-animate-zoom">  
          <div class="w3-container radius" style="background-color: white;">  
-            <span onclick="document.getElementById('dataModal').style.display='none'" class="w3-button w3-display-topright"  data-dismiss="w3-modal">&times;</span>
+            <span onclick="document.getElementById('dataModal').style.display='none'" class="w3-button w3-display-topright"  data-dismiss="modal">&times;</span>
             <h3>員工詳情</h3><hr>
-            <div class="modal-body" id="project_detail">
-                <table class="w3-table tab-w100_80">
-                    <tr>
-                        <th class="bold2">員工編號</th>
-                        <td>E00000</td>
-                    </tr>
-                </table>
-
-                <table class="w3-table tab-w100_200">
-                    <tr>
-                        <th class="bold2">員工名稱</th>
-                        <td>emp_name</td>
-                    </tr>
-                    <tr>
-                        <th class="bold2">電話號碼</th>
-                        <td>886901123456</td>
-                    </tr>
-                </table>
-
-                <table class="w3-table tab-w30p_5p">
-                    <tr>
-                        <th class="bold2">工作評價</th>
-                        <td>懶散</td>
-                    </tr>
-                </table>
-                
-                <table class="w3-table tab-works-on">
-                    <tr>
-                        <th class="bold2" style="width: 100px;">負責專案</th>
-                        <th class="bold2" style="width: 300px;">專案名稱</th>
-                        <th class="bold2" style="width: 60px;"> 領隊    </th>
-                        <th class="bold2">                      工作详情</th>
-                    </tr>
-                    <tr>
-                        <td>P00000</td>
-                        <td>P_name</td>
-                        <td class="red">&#10008;</td>
-                        <!-- <td class="green">&#10004;</td>-->
-                        <td>P_detail</td>
-                    </tr>
-                </table>
+            <div class="modal-body" id="employee_detail">
             </div>
             
-            <button type="button" onclick="document.getElementById('dataModal').style.display='none'" class="button-close fl-lf" data-dismiss="w3-modal">關閉</button>  
+            <button type="button" onclick="document.getElementById('dataModal').style.display='none'" class="button-close fl-lf" data-dismiss="modal">關閉</button>  
          </div>  
     </div>  
 </div>
@@ -290,7 +251,7 @@
               if(employee_id != '')  
               {  
                    $.ajax({  
-                        url:"select.php",  
+                        url:"mgr_emp_view.php",  
                         method:"POST",  
                         data:{employee_id:employee_id},  
                         success:function(data){  
