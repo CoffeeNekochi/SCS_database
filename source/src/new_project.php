@@ -48,7 +48,7 @@ if (empty($conn)){
             <a href="mgr_home.php" class="w3-bar-item side_header">首頁</a>
             <nav class="sidebar-nav">
                 <ul>
-                  <li>
+                <li>
                     <a><img src="img\project.png"><span>專案</span></a>
                     <ul class="nav-flyout">
                       <li>
@@ -64,6 +64,9 @@ if (empty($conn)){
                   </li>
                   <li>
                     <a href="mgr_cal.php"><img src="img\calender.png"><span class="">行事歷</span></a>
+                  </li>
+                  <li>
+                      <a href="mgr_map.php"><img src="img\map.png"><span class="">專案地圖</span></a>
                   </li>
                 </ul>
               </nav>
