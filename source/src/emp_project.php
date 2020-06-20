@@ -3,22 +3,21 @@
     // Create connection
     $conn = mysqli_connect("localhost", $_SESSION["ac"], $_SESSION["pw"], "new_scs");
     $ac=$_SESSION["ac"];
-    // Check connection
-    if ($conn) {
-        echo "Server is connected";
-    }else{
-        echo "Error";
-    }
+    
     $query = "	SELECT *
                 FROM emp_proj
                 WHERE emp_id = '$ac'
                 ORDER BY P_id";
+    $query2 = "	SELECT *
+                FROM project_member
+                WHERE emp_id = '$ac'";
     $result = mysqli_query($conn, $query);
+    $result2 = mysqli_query($conn, $query2);
     if (!$result) {
     printf("Error: %s\n", mysqli_error($conn));
     exit();
     }
-    
+    $row2 = mysqli_fetch_array($result2);
     $data_nums = mysqli_num_rows($result); //統計總比數
     $per = 10; //每頁顯示項目數量
     $pages = ceil($data_nums/$per); //取得不小於值的下一個整數
@@ -103,9 +102,9 @@
                                 <td class="column6">
                                     <input type="button" name="view" value="查看" id="<?php echo $row["P_id"]; ?>" class="button button-view view_data"/>
                                     <?php
-                                        $flag = $row["lead_flag"];
-                                        if($row["lead_flag"] == 1){
-                                            echo "<input type='button' name='edit' value='修改' id=". $flag ." class='button button-change edit_data'/>";
+                                        $flag = $row2["lead.flag"];
+                                        if($row2["lead.flag"] == 1){
+                                            echo "<input type='button' name='edit' value='修改' id=".$flag." class='button button-change edit_data'/>";
                                         }
                                     ?>
                                 </td>
