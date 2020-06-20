@@ -48,6 +48,9 @@ session_start();
                   <li>
                     <a href="mgr_cal.php"><img src="img\calender.png"><span class="">行事歷</span></a>
                   </li>
+                  <li>
+                      <a href="mgr_map.php"><img src="img\map.png"><span class="">專案地圖</span></a>
+                  </li>
                 </ul>
               </nav>
         </div>

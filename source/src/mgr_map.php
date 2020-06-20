@@ -40,15 +40,26 @@
             <a href="mgr_home.php" class="w3-bar-item side_header">首頁</a>
             <nav class="sidebar-nav">
                 <ul>
-                    <li>
-                        <a href="mgr_project.php"><img src="img\project.png"><span class="">專案列表</span></a>
-                    </li>
-                    <li>
-                        <a href="mgr_cal.php"><img src="img\calender.png"><span class="">行事歷</span></a>
-                    </li>
-                    <li>
-                        <a href="mgr_map.php"><img src="img\map.png"><span class="">專案地圖</span></a>
-                    </li>
+                <li>
+                    <a><img src="img\project.png"><span>專案</span></a>
+                    <ul class="nav-flyout">
+                      <li>
+                        <a href="mgr_project.php"><img src="img\project_main.png">專案管理</a>
+                      </li>
+                      <li>
+                        <a href="new_project.php"><img src="img\new_project.png">新建專案</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="mgr_employee.php"><img src="img\staff.png"><span>員工管理</span></a>
+                  </li>
+                  <li>
+                    <a href="mgr_cal.php"><img src="img\calender.png"><span class="">行事歷</span></a>
+                  </li>
+                  <li>
+                      <a href="mgr_map.php"><img src="img\map.png"><span class="">專案地圖</span></a>
+                  </li>
                 </ul>
             </nav>
         </div>
