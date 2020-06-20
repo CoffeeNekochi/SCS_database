@@ -15,8 +15,8 @@ session_start();
         <!--Sidebar-->
         <?php
         //登入資料庫
-        $DBHOST = "localhost"; //主機位置
-        $conn = mysqli_connect( $DBHOST,$_SESSION["ac"],$_SESSION["pw"]); //連接資料庫
+        $DBHOST = "localhost"; //主機位置$conn = mysqli_connect("localhost","root", "", "new_scs");
+        $conn = mysqli_connect( $DBHOST,$_SESSION["ac"],$_SESSION["pw"]); //連接資料庫mysqli_connect( $DBHOST,$_SESSION["ac"],$_SESSION["pw"]);
         if (empty($conn)){
             session_destroy();
             echo "無法連結資料庫";
@@ -49,7 +49,7 @@ session_start();
                     <a href="mgr_cal.php"><img src="img\calender.png"><span class="">行事歷</span></a>
                   </li>
                   <li>
-                      <a href="mgr_map.php"><img src="img\map.png"><span class="">專案地圖</span></a>
+                    <a href="mgr_map.php"><img src="img\map.png"><span class="">專案地圖</span></a>
                   </li>
                 </ul>
               </nav>
