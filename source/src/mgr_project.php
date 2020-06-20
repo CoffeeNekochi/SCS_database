@@ -118,8 +118,8 @@
                                     <td class="column4"><?php echo $row["loc_addr"]; ?></td>
                                     <td class="column5 red">&#10008;</td>
                                     <td class="column6">
-                                        <input type="button" name="view" value="查看" id="<?php echo $row["P_id"]; ?>" class="button button-change view_data" />
-                                        <input type="button" name="edit" value="修改" id="<?php echo $row["P_id"]; ?>" class="button button-view edit_data" />  
+                                        <input type="button" name="view" value="查看" id="<?php echo $row["P_id"]; ?>" class="button button-view view_data" />
+                                        <input type="button" name="edit" value="修改" id="<?php echo $row["P_id"]; ?>" class="button button-change edit_data" />  
                                         <input type="button" name="delete" value="刪除" id="<?php echo $row["P_id"]; ?>" onclick="deleteData(<?php echo $row['P_id'] ?>)" class="button button-delete delete_data" style="background: red;" />
                                     </td>
                                 </tr>
