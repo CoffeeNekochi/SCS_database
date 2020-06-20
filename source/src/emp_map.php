@@ -1,14 +1,9 @@
 <?php
+    session_start();
     $locations = array();
     // Create connection
-    $conn = mysqli_connect("localhost", "root", "", "new_scs");
+    $conn = mysqli_connect("localhost", $_SESSION["ac"], $_SESSION["pw"], "new_scs");
 
-    // Check connection
-    if ($conn) {
-        echo "Server is connected";
-    }else{
-        echo "Error";
-    }
     $query = "	SELECT *
                 FROM `location` ";
     $result = mysqli_query($conn, $query);
@@ -37,7 +32,7 @@
         <!--Sidebar-->
         <div class="w3-sidebar w3-bar-block w3-collapse w3-card" style="width:200px;" id="mySidebar">
             <button class="w3-bar-item w3-button w3-large w3-hide-large" onclick="w3_close()">Close &times;</button>
-            <a href="emp_home.html" class="w3-bar-item side_header w3-deep-purple">首頁</a>
+            <a href="mgr_home.php" class="w3-bar-item side_header w3-deep-purple">首頁</a>
             <nav class="sidebar-nav">
                 <ul>
                     <li>

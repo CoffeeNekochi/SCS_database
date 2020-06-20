@@ -4,7 +4,7 @@
         <?php
         session_start();
         // Create connection
-        $conn = mysqli_connect("localhost","root", "", "new_scs");
+        $conn = mysqli_connect("localhost", $_SESSION["ac"], $_SESSION["pw"], "new_scs");
         $query = "	SELECT * FROM mgr_emp ORDER BY emp_id ";
         $result = mysqli_query($conn, $query);
         if (!$result) {
