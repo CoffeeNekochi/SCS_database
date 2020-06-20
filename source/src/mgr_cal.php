@@ -1,7 +1,7 @@
 <?php
 session_start();
 // Create connection
-$conn = mysqli_connect("localhost", $_SESSION["ac"], $_SESSION["pw"], "new_scs");
+$conn = mysqli_connect("localhost","root", "", "new_scs");
 
 // Check connection
 if (empty($conn)){
@@ -28,6 +28,12 @@ $result2 = mysqli_query($conn, $query2);
 <link href="./packages/list/main.css" rel="stylesheet" />
 <link href="./packages-premium/timeline/main.css" rel="stylesheet" />
 <link href="./packages-premium/resource-timeline/main.css" rel="stylesheet" />
+<link rel="stylesheet" href="css\w3school.css">
+        <link rel="stylesheet" href="css\home.css">
+        <link rel="stylesheet" href="css\form.css">
+        <link rel="stylesheet" href="css\sidebar.css">
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css">
 <script src="./packages/core/main.js"></script>
 <script src="./packages/interaction/main.js"></script>
 <script src="./packages/daygrid/main.js"></script>
@@ -102,9 +108,48 @@ $result2 = mysqli_query($conn, $query2);
 
 </style>
 </head>
-<body>
+<body style="background-image: url("../img/download.jpg");">
+<!--Sidebar-->
+<div class="w3-sidebar w3-bar-block w3-collapse w3-card" style="width:200px;" id="mySidebar">
+            <button class="w3-bar-item w3-button w3-large w3-hide-large white" onclick="w3_close()">Close &times;</button>
+            <a href="mgr_home.php" class="w3-bar-item side_header">首頁</a>
+            <nav class="sidebar-nav">
+                <ul>
+                  <li>
+                    <a><img src="img\project.png"><span>專案</span></a>
+                    <ul class="nav-flyout">
+                      <li>
+                        <a href="mgr_project.php"><img src="img\project_main.png">專案管理</a>
+                      </li>
+                      <li>
+                        <a href="new_project.php"><img src="img\new_project.png">新建專案</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="mgr_employee.php"><img src="img\staff.png"><span>員工管理</span></a>
+                  </li>
+                  <li>
+                    <a href="mgr_cal.php"><img src="img\calender.png"><span class="">行事歷</span></a>
+                  </li>
+                  <li>
+                        <a href="emp_map.php"><img src="img\map.png"><span class="">專案地圖</span></a>
+                    </li>
+                </ul>
+              </nav>
+        </div>
 
-  <div id="calendar"></div>
+        <!-- Head -->
+        <div class="w3-main" style="margin-left:200px">
+            <div class="w3-teal">
+                <!--nav-menu-button-->
+                <button class="w3-button w3-teal w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</button>
+                <!--Content-title-->
+                <div class="w3-container">
+                    <h1>行事歷</h1>
+                </div>
+            </div>
+  <div id="calendar"></div></div>
 
 </body>
 </html>
